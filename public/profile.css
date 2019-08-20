@@ -1,0 +1,150 @@
+/*
+  #home {
+    background-color: #337AB6;
+  }
+
+  .home-page {
+    float: left;
+    flex: 1;
+    padding-right: 15px;
+    padding-left: 15px;
+    overflow: scroll;
+  }
+
+  .parent {
+    margin: 40px;
+    margin-top: 3%;
+    background: rgb(249, 249, 249);
+    padding: 1.25rem;
+  }
+
+  .editbutton {
+    display: none;
+  }
+
+  .flex {
+    display: block;
+    margin-top: 25px;
+  }
+
+  .left {
+    flex: 1;
+    order: 1;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-bottom: 25px;
+  }
+
+  .right {
+    flex: 1;
+    order: 2;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+  .desc {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+    padding: 10px 15px;
+    border-bottom: 2px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  .value {
+    padding: 15px;
+    background-color: #FFFFFF;
+    color: #575757 !important;
+  }
+
+
+  .container-div {
+    box-shadow: 0 3px 10px 0 rgba(115,143,147,.3);
+    border-radius: 0.25rem;
+  }
+
+  .container-dp {
+      width: 160px;
+      display: block;
+      margin-bottom: 10px;
+  }
+
+  #desktop-dp {
+    padding: 0.25rem;
+    height: 150px;
+    width: 150px;
+    display: none;
+  }
+
+  @media (min-width: 768px)
+  {
+    .flex {
+      display: flex;
+    }
+
+    #desktop-dp {
+      display: block;
+    }
+
+    .left {
+      margin-bottom: 0px;
+    }
+  }
+  */
+  .div-min-width
+  {
+      min-width: 360px;
+  }
+  .imageDiv
+  {
+      display: none;
+  }
+
+  #profilepic
+  {
+      width: 150px;
+      height: 150px;
+      padding: 0.25rem;
+      background-color: #FCFCFC;
+      border: 1px solid #ccc;
+      border-radius: 0.25rem;
+      max-width: 100%;
+      box-shadow: 0 3px 10px 0 rgba(115,143,147,.3);
+  }
+
+  .panelDiv
+  {
+      box-shadow: 0 3px 10px 0 rgba(115,143,147,.3);
+  }
+
+  .to-center-div
+  {
+      margin-top: 2%;
+  }
+
+  .editbutton {
+    display: none;
+  }
+
+  @media (min-width: 768px)
+  {
+      .imageDiv
+      {
+          display: block;
+      }
+      .to-center-div
+      {
+          margin-left:60px;
+      }
+
+  }
+
+  .profile-pic-center-main-div {
+    display: none;
+  }
+
+  .home {
+    background-color: #337AB6;
+    color: white;
+  }

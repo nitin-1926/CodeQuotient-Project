@@ -1,0 +1,32 @@
+
+.allSides {
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  /* -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); */
+  -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+@media (max-width: 768px) and (min-width: 0px)
+{
+  .mobile {
+    display: block !important;
+  }
+}
+
+.profile-pic-center {
+  background: rgb(255, 255, 255) !important;
+  height: 120px;
+  width: 120px;
+  margin-top: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.profile-pic-center-main-div {
+  display: none;
+  height: 110px;
+  width: 100%;
+  margin-bottom: 50px;
+  background-image: linear-gradient(to bottom, #4ba2b7, #42a6be, #38aac6, #29adcd, #0fb1d5);
+  text-align: center;
+}

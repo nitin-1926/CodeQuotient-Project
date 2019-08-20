@@ -1,0 +1,29 @@
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #F3F4F4;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+  }
+
+  .errpic {
+  height: 400px;
+  }
+
+  h2 {
+    font-weight: 500;
+    color:white;
+    font-size:30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  header {
+    top: 0;
+    height:60px;
+    width:100%;
+    background-color:#222D3C;
+  }

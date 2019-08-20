@@ -1,0 +1,230 @@
+      <% include partials/commonhead.ejs %>
+      <link rel="stylesheet" href="userslist.css">
+      <link rel="stylesheet" href="common.css">
+      <link rel="stylesheet" href="trumbowyg.css">
+      <script type="text/javascript" src="trumbowyg.min.js"></script>
+    </head>
+    <body classs="body">
+
+      <% include partials/header.ejs %>
+        <div id="viewscreen" >
+            <% include partials/sidebar.ejs %>
+                <div id="rightview">
+                    <div class="container-fluid div-min-width" style="padding:0">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div style="margin-left:20px;margin-right:20px;">
+                                    <!-- MODAL DIVS -->
+                                    <center>
+
+                                      <div class="modal fade in" id="sendmail" role="dialog" style="z-index: 9999;">
+                                          <div class="modal-dialog modal-md">
+
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">×</button>
+                                                <h4 class="modal-title" id="mailheader">Send Reminder Mail</h4>
+                                              </div>
+                                              <div class="modal-body">
+                                              <div class="form-horizontal">
+                                                <div class="form-group">
+                                                  <label class="control-label col-sm-2" for="email">To:</label>
+                                                  <div class="col-sm-10">
+                                                    <input id="musername" type="username" name="username" class="form-control" readonly="">
+                                                  </div>
+                                                </div>
+                                                <div class="form-group">
+                                                  <label class="control-label col-sm-2">Subject:</label>
+                                                  <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="subject" placeholder="Title">
+                                                  </div>
+                                                </div>
+                                                <div class="form-group" style="margin:0px;">
+
+                                                  <textarea name="mailcontent" type="text" id="mailcontent" class="form-control" ></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                  <div class="col-sm-offset-2 col-sm-10">
+                                                    <button class="btn btn-default" id="sendmailbutton" style="float:right" data-dismiss="modal">Send</button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                    <div id="editModal" class="modal fade" role="dialog" style="z-index:9999;">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                     <h3 id="eheading" style="text-align:left;" class="modal-title"></h3>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                        <div class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <div class="col-lg-5 col-lg-offset-3" style="width:50%;">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="control-label col-sm-2">Username:</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" id="eusername" placeholder="Username">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="control-label col-sm-2">Phone:</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" id="ephone" placeholder="Username">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="control-label col-sm-2">City:</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" id="ecity" placeholder="City">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="control-label col-sm-2">Status:</label>
+                                                            <div class="col-sm-10">
+                                                                <select class="form-control" id="estatus">
+                                                                    <option value="pending">Pending</option>
+                                                                    <option value="confirmed">Confirmed</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="control-label col-sm-2">Role:</label>
+                                                            <div class="col-sm-10">
+                                                                <select class="form-control" id="erole">
+                                                                    <option value="user">User</option>
+                                                                    <option value="communitybuilder">Community Builder</option>
+                                                                    <option value="admin">Admin</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="col-sm-offset-2 col-sm-10" style="text-align:left;">
+                                                                <button class = "btn btn-default" id="editsubmit" data-dismiss="modal">Update</button>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="activatemodal" class="modal fade" role="dialog" style="top:30%;">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="activatemodal-title" style="text-align:left;"></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p id="activatemodal-body" style="text-align:left;"></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button id="yes-active" type="button" class="btn btn-success" data-dismiss="modal">Yes</button>
+                                                <button id="no-active" type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div id="deactivatemodal" class="modal fade" role="dialog" style="top:30%;">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="deactivatemodal-title" style="text-align:left;"></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p id="deactivatemodal-body" style="text-align:left;"></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button id="yes-deactive" type="button" class="btn btn-success" data-dismiss="modal">Yes</button>
+                                                <button id="no-active" type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                            </center>
+                                <!-- AFTER MODEL-->
+
+                                <div id="container-parent" style="margin-left:20px; margin-right:20px;">
+                                    <div class="container" style="padding:0; margin-bottom:3%;">
+                                        <center>
+                                            <p></p>
+                                        </center>
+                                        <div class="form-control" id="pagename-icon" style="width:90px;">User list</div>
+                                        <select class="form-control" id="role-select" style="float:right;margin-left:10px; width:14%; background-color:black; color:white;">
+                                            <option value="all">All</option>
+                                            <option value="admin">Admins</option>
+                                            <option value="user">Users</option>
+                                            <option value="communitybuilder">Community Builder</option>
+                                        </select>
+                                        <select class="form-control" id="status-select" style="float:right;margin-left:10px; width:10%; background-color:black; color:white;">
+                                            <option value="all">All</option>
+                                            <option value="pending">Pending</option>
+                                            <option value="confirmed">Confirmed</option>
+                                        </select>
+
+                                        <button class="btn btn-default" id="refresh" style="float:right;background-color: #2D312C;color: #fff;">
+                                            <span class="glyphicon glyphicon-refresh">
+                                            </span>
+                                            Refresh
+                                        </button>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <div class="table-wrapper">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <table id="users-table" class="table table-striped table-bordered"  style="display:table;width:100%">
+                                                        <thead>
+
+                                                          <tr role="row">
+                                                                <th>Username/Email</th>
+                                                                <th>Phone</th>
+                                                                <th>City</th>
+                                                                <th>Status</th>
+                                                                <th>Role</th>
+                                                                <th>Actions</th>
+                                                          </tr>
+
+                                                        </thead>
+
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+
+    </body>
+    <% include partials/js.ejs %>
+    <script type="text/javascript" src="userslist.js"></script>
+  </html>

@@ -1,0 +1,51 @@
+<div id="rightview">
+  <div class="container-fluid div-min-width aaaa" style="padding:0; min-width:360px;">
+      <div class="row">
+        <div class="col-lg-12" style="padding:0;">
+            <% include minibluehead.ejs %>
+             <div class="container" style="padding:0;">
+               <div class="col-sm-12">
+                 <div id="cancelRequest" class="modal fade" role="dialog" style="top:30%;">
+                     <div class="modal-dialog modal-sm">
+                         <div class="modal-content">
+                             <div class="modal-header">
+                                 <h4 class="modal-title" id="" style="text-align:left;">Cancel Request</h4>
+                             </div>
+                             <div class="modal-body">
+                                 <p id="" style="text-align:left;">Do you really want cancel request...</p>
+                             </div>
+                             <div class="modal-footer">
+                                 <button id="yes-cancel" type="button" class="btn btn-success" data-dismiss="modal">Yes</button>
+                                 <button id="" type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="panel panel-default allSidesSoft community-panel-main-div">
+
+                   <div class="panel-heading community-header-top" style="height:50px;">
+                        <p style="color:white;margin-top:6px;font-weight:bold">My Communities</p>
+                        <a href="/switchcreatecommunity" class="btn btn-info community-panel-btn" style="float:right;margin:-35px 5px 0 0">Create</a>
+                   </div>
+
+                   <p id="objectId" style="display:none;"><%= obj._id %></p>
+
+                   <div class="panel-body">
+                     <div id="owned-list">
+
+                     </div>
+                     <div id="member-list">
+
+                     </div>
+                     <div id="request-list">
+
+                     </div>
+                   </div>
+
+                 </div>
+               </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

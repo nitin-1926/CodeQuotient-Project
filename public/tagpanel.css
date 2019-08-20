@@ -1,0 +1,26 @@
+.div-min-width
+{
+    min-width: 368px;
+}
+  .tagpanel-page {
+    float: left;
+    flex: 1;
+  }
+
+  #tagpanel {
+    background-color: #337AB6;
+    color: white;
+  }
+
+  .allSides {
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  }
+
+  .tagMainDiv {
+    background: white;
+  }
+
+  .tagpanel {
+    background-color: #337AB6;
+    color: white;
+  }

@@ -1,0 +1,149 @@
+    <% include partials/commonhead.ejs %>
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="communitylist.css">
+    </head>
+    <body classs="body">
+
+      <% include partials/header.ejs %>
+        <div id="viewscreen" >
+            <% include partials/sidebar.ejs %>
+                <div id="rightview">
+                    <div class="container-fluid div-min-width" style="padding:0">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div style="margin-left:20px;margin-right:20px;">
+                                    <!-- MODAL DIVS -->
+                                    <center>
+
+                                      <div class="modal fade" id="updateCommunity" role="dialog" style="z-index:9999">
+                                            <div class="modal-dialog">
+
+                                              <div class="modal-content">
+                                                <div class="modal-header" style="word-wrap:break-word; text-align:left;">
+                                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                  <h4 class="modal-title" id="CommunityNamePop" style=" font-weight:bold"></h4>
+                                                  <p id="CommunityAdminPop" style="font-size:10px;"></p>
+                                                </div>
+                                                <div class="modal-body">
+                                                <!------------------------------------------------------------------------------------>
+                                              <div class="form-horizontal">
+                                                  <div class="form-group">
+                                                    <div class="col-lg-5 col-lg-offset-3" style="width:50%">
+                                                      <input style="display:none" type="text" name="_id" style="text-align:center" class="form-control" id="_id" readonly>
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group">
+                                                    <label class="control-label col-sm-2">Commuity Name:</label>
+                                                    <div class="col-sm-10">
+                                                      <input type="text" name="communityName" class="form-control" id="CommuityName" placeholder="Community Name">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group">
+                                                    <label class="control-label col-sm-2">Community Status:</label>
+                                                    <div class="col-sm-10">
+                                                      <select class="form-control" id="communityStatus" name="communityActive">
+                                                          <option name="true" value="Active" >Active</option>
+                                                          <option name="false" value="Not Active" >Deactive</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="form-group">
+                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                      <button class="btn btn-default pull-left" id="editsubmit" data-dismiss="modal">Update</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <!---------------------------------------------------------------------------------->
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="modal fade" id="CommunityInfo" role="dialog" style="z-index: 9999;padding-left: 0px;">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal">×</button>
+                                                  <div id="CommunityProfile"><img id="CommunityProfilePic" class="CommunityProfilePic allSides" src="">
+                                                  </div>
+                                                  <p id="CommunityInfoPop"></p>
+                                                  <a href="" id="mapLink" target="_blank">
+                                                    <p id="locInfo" style="font-size:15px;float:right;bottom:0;font-weight:bold"></p>
+                                                  </a>
+                                                </div>
+                                                <div class="modal-body">
+                                                <p style="font-size:15px;font-weight:bold;">Community Description</p><p id="locInfo" style="font-size:15px;float:right"></p>
+                                                <div id="communityDesc" class="well well-lg" style="word-wrap: break-word;">jknkjkbkjbkj</div>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+
+                                    </center>
+                                <!-- AFTER MODEL-->
+
+                                <div id="container-parent" style="margin-left:20px; margin-right:20px;">
+                                    <div class="container" style="padding:0; margin-bottom:3%; margin-left:45px; margin-top: 15px;">
+                                        <div class="form-control" id="pagename-icon" style="width:135px">Community List</div>
+                                        <select class="form-control" id="membership-select" style="float:right;margin-left:10px; width:14%; background-color:black; color:white;">
+                                            <option value="all">All</option>
+                                            <option value="Direct">Direct</option>
+                                            <option value="Permission">Permission</option>
+                                        </select>
+                                        <button id="refresh" class="btn btn-default" style="float:right;background-color: #2D312C;color: #fff;">
+                                            <span class="glyphicon glyphicon-refresh">
+                                            </span>
+                                            Refresh
+                                        </button>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <div class="table-wrapper">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <table id="community-table" class="table table-striped table-bordered"  style="display:table;width:100%">
+                                                          <thead>
+
+                                                            <tr role="row">
+                                                                  <th>Community Name</th>
+                                                                  <th>Membership Rule</th>
+                                                                  <th>Community Location</th>
+                                                                  <th>Community Owner</th>
+                                                                  <th>Create Date</th>
+                                                                  <th>Actions</th>
+                                                                  <th>Community Pic</th>
+                                                            </tr>
+
+                                                        </thead>
+
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+
+    </body>
+    <% include partials/js.ejs %>
+    <script type="text/javascript" src="communitylist.js" ></script>
+    </html>

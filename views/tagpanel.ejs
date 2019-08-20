@@ -1,0 +1,47 @@
+
+      <% include partials/commonhead.ejs %>
+      <link rel="stylesheet" href="tagpanel.css">
+      <link rel="stylesheet" href="common.css">
+    </head>
+    <body>
+      <p id="tagcreator" style="display:none;"><%= obj.name %></p>
+      <% include partials/header.ejs %>
+      <div id="viewscreen">
+
+        <% include partials/sidebar.ejs %>
+
+        <div id="rightview">
+          <div class="div-min-width" style="padding:0">
+              <div class="row"  style="padding:0">
+                  <div class="col-lg-12"  style="padding:0">
+                      <div class="container" style="padding-top:100px">
+                          <div class="col-sm-6 col-md-6 col-lg-6 col-xs-10 col-xs-push-1 col-lg-push-3
+                          col-sm-push-3 col-md-push-3 tagMainDiv allSides">
+                              <h3 class = "page-header" style="color:#707070">Create Tag</h3>
+                              <form id="tagform">
+                                  <div class="form-group">
+                                      <input class="form-control" id="input-tag" type="text" name="tagName" placeholder="Tag Name">
+                                  </div>
+                                  <div class="form-group">
+                                      <input id="tag-sub-btn" class="form-control btn btn-primary" type="submit" value="Submit">
+                                  </div>
+                              </form>
+
+                              </div>
+                      </div>
+
+                      <center>
+                          <a onclick="opentaglist()" class="btn btn-warning btn-sm" style="margin-top:10px">Tag Lists</a>
+                      </center>
+                      <br>
+                      <br>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+      </div>
+    </body>
+    <% include partials/js.ejs %>
+    <script type="text/javascript" src="tagpanel.js" ></script>
+  </html>

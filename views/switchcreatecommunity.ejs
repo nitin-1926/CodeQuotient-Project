@@ -1,0 +1,59 @@
+<% include partials/commonhead.ejs %>
+    <link rel="stylesheet" href="communityhome.css">
+    <link rel="stylesheet" href="trumbowyg.css">
+    <script type="text/javascript" src="trumbowyg.min.js"></script>
+      <style>
+
+        .aaaa {
+          margin-left:0px;
+        }
+
+        .community-header-top {
+          width: 100%;
+          background-image: linear-gradient(to bottom, #4ba2b7, #42a6be, #38aac6, #29adcd, #0fb1d5);
+          height: 180px;
+        }
+
+        .community-head-btn {
+          border: 1px solid #fff;
+          color : white;
+        }
+
+        .community-panel-main-div {
+          border: 0;
+          border-radius: 0;
+          margin-top: 0px;
+        }
+
+        .allSidesSoft {
+          box-shadow: 0 3px 10px 0 rgba(115,143,147,.3);
+        }
+
+        @media (min-width: 768px) {
+          .community-panel-main-div {
+            margin-top: 50px;
+          }
+
+          .aaaa {
+            margin-left: 65px;
+          }
+        }
+
+      </style>
+
+      </head>
+      <body>
+        <% include partials/header.ejs %>
+        <div id="viewscreen">
+            <% include partials/switchsidebar.ejs %>
+            <% include partials/commoncreatecommunity.ejs %>
+      </body>
+      <script type="text/javascript" src="switchsidebar.js"></script>
+      <script>
+
+        $(document).ready(function(){
+           $.trumbowyg.svgPath="trumbowyg.svg"
+           $("#communitydescription").trumbowyg();
+        })
+      </script>
+      </html>

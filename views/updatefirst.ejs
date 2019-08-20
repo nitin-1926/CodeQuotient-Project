@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>CQ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="blueimage.css">
+    <link rel="stylesheet" href="header.css">
+    <style>
+
+      #updatefirst {
+        display: none;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <% include partials/updatefirstheader.ejs %>
+    <% include partials/commoneditinfo.ejs %>
+    <% include partials/logoutmodel.ejs %>
+  </body>
+  <script>
+    function open_logout()
+    {
+      window.location = '/logout'
+    }
+  </script>
+
+</html>

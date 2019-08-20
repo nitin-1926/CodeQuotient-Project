@@ -1,0 +1,40 @@
+.div-min-width
+{
+    min-width: 368px;
+}
+
+#pagename-icon
+{
+    float:left;
+    border: 2px solid #2D312C;
+    background-color: #2D312C;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 0 11px black;
+}
+
+.actionbtns {
+    margin: 5px;
+}
+
+@media (min-width:768px)
+{
+    #container-parent
+    {
+        margin-left: 40px;
+        margin-right: 20px;
+    }
+
+}
+
+@media (max-width:768px)
+{
+    .div-min-width {
+      overflow-x: scroll;
+    }
+}
+
+.communitylist {
+  background-color: #337AB6;
+  color: white;
+}

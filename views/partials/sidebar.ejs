@@ -1,0 +1,97 @@
+  <div id="sidebar">
+      <ul class="sidebar-list">
+
+          <li class="list" id="mobile-pic">
+              <div style="margin-right:10px">
+                  <center>
+                      <img src="<%= obj.photoname %>" id="mobile-img">
+                  </center>
+              </div>
+          </li>
+          <li class="list" id="bars">
+          <a onclick="showsidebar()" id="open">
+              <span class="list-span">
+                  <i class="fas fa-bars" id="icon"></i>
+              </span>
+                  cq
+          </a>
+          </li>
+
+          <li class="list home">
+              <a onclick="open_home_page()">
+                  <span class="list-span">
+                      <i class="fas fa-home" id="icon"></i>
+                  </span>
+                  Home
+              </a>
+          </li>
+
+          <li class="list adduser">
+              <a onclick="open_adduser_page()">
+                  <span class="list-span">
+                      <i class="fas fa-plus-square" id="icon"></i>
+                  </span>
+                  Add User
+              </a>
+          </li>
+
+
+          <li class="list userslist">
+              <a onclick="open_userlist_page()">
+                  <span class="list-span">
+                      <i class="fas fa-list" id="icon"></i>
+                  </span>
+                  Users List
+              </a>
+          </li>
+
+          <li class="list communitylist">
+              <a onclick="open_communitylist_page()">
+                  <span class="list-span">
+                      <i class ="	fas fa-list-alt" id="icon"></i>
+                  </span>
+                  Community List
+              </a>
+          </li>
+
+          <li onclick="open_switchmodel_page()" class="list switchasuser" data-toggle="modal" data-target="#switch-model">
+              <a>
+                  <span class="list-span">
+                      <i class="fas fa-toggle-off" id="icon"></i>
+                  </span>
+                  Switch As User
+              </a>
+          </li>
+
+          <li class="list tagpanel">
+              <a onclick="open_tag_page()">
+                  <span class="list-span">
+                      <i class="fas fa-tags" id="icon"></i>
+                  </span>
+                  Tag Panel
+              </a>
+          </li>
+
+          <li class="list changepassword">
+              <a onclick="open_changepassword_page()">
+                  <span class="list-span">
+                      <i class="fas fa-lock" id="icon"></i>
+                  </span>
+                  Change Password
+              </a>
+          </li>
+
+          <li class="list background" data-toggle="modal" data-target="#logout-model" >
+              <a>
+                  <span class="list-span">
+                      <i class="fas fa-sign-out-alt" id="icon"></i>
+                  </span>
+                  Logout
+              </a>
+          </li>
+
+      </ul>
+  </div>
+
+  <% include logoutmodel.ejs %>
+  <% include switchmodel.ejs %>

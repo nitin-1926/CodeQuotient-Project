@@ -1,0 +1,124 @@
+<div id="rightview">
+<!--       <div class="profile-pic-center-main-div mobile">
+    <img src="dp.png" class="profile-pic-center allSides">
+  </div> -->
+  <div class="container-fluid div-min-width" style="min-width:360px;">
+    <div class="row">
+      <div class="col-lg-12" style="padding:0;">
+        <div class="mobile profile-pic-center-main-div" style="">
+          <img src="<%= obj.photoname %>" class="profile-pic-center allSides">
+        </div>
+        <div class="container" >
+          <div style="margin-top:60px;">
+            <div class="allSidesSoft panel panel-default">
+              <div class="panel-body">
+                <div class="d-flex">
+                 <img src="<%= obj.photoname %>" id="user-profile-image" style="width: 150px; height: 150px" class="allSidesSoft img-thumbnail">
+                  <form action="/upload" enctype="multipart/form-data" method="POST">
+                      <input type="file" name="myImage" accept="image/*" />
+                      <input type="submit" value="Upload Photo"/>
+                  </form>
+
+                </div>
+                <br>
+
+                <form action="/edituserinfo" method="POST" >
+                  <div class="panel-group">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">Basic Info</div>
+                      <div class="panel-body">
+
+                        <div class="form-group">
+                          <label>Email :</label>
+                          <input type="text" value="<%= obj.username  %>" class="form-control" name="username" disabled="true" />
+                        </div>
+
+                        <div class="form-group">
+                          <label>Name :</label>
+                          <input type="text" value="<%= obj.name  %>" class="form-control" name="name" required="" />
+                        </div>
+
+                        <div class="col-sm-5 form-group" style="padding:0;">
+                            <label>DOB :</label>
+                            <input class="form-control dobDate" id="date" value="<%= obj.dob  %>" name="dob" placeholder="DD-MM-YYYY" type="date" autocomplete="off" required="">
+                        </div>
+
+                        <div class="form-group col-sm-5 col-sm-push-2" style="padding:0;">
+                                <label>Gender :</label>
+                                <select name="gender" class="form-control" required="">
+                                    <optgroup label="Select Gender">
+
+                                    <option value="male" selected="">Male</option>
+
+
+
+                                    <option value="female">Female</option>
+
+
+
+                                    <option value="transgender">Transgender</option>
+
+                                </optgroup>
+                                </select>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">Contact Info</div>
+                      <div class="panel-body">
+
+                        <div class="form-group">
+                            <label>Phone :</label>
+                            <input type="text" value="<%= obj.phone  %>" class="form-control" name="phone" maxlength="10" required="" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>City :</label>
+                            <input type="text" value="<%= obj.city  %>" class="form-control" name="city" required="" />
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                      <div class="panel-heading">Personal Info</div>
+                      <div class="panel-body">
+
+                        <div class="form-group">
+
+                          <label>Interests :</label>
+                          <input type="text" value="" class="form-control" name="interests" placeholder="Enter Interests:" required="" />
+
+                          <div class="form-group">
+                                <label>Tell us a bit more about your journey:</label>
+                                <textarea type="text" class="form-control" name="journey" required=""></textarea>
+                          </div>
+
+                          <div class="form-group">
+                                  <label>What are your expectations from the communities?</label>
+                                  <textarea type="text" class="form-control" name="expectations" required=""></textarea>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="form-group">
+
+                        <a href="#" onclick="open_changepassword_page()" class="btn btn-warning pull-left btnEditForm" style="margin:1px" id="updatefirst" >Change Password</a>
+
+                        <a href="#" onclick="openeditpage()" class="btn btn-danger pull-right btnEditForm" style="margin:1px" id="updatefirst">Cancel</a>
+                        <input type="submit" onclick="sayhello()" class="btn btn-primary pull-right btnEditForm" style="margin:1px" value="Update" />
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

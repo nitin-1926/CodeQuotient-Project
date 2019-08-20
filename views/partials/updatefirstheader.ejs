@@ -1,0 +1,25 @@
+<nav id="navbar" style="position:sticky;">
+
+        <div class="container-fluid" style="padding:0;" >
+
+            <div id="leftpanel" style="float:left;">
+                 <a id="cq" class="navbar-brand" href="#">cq</a>
+                 <a data-toggle="modal" data-target="#logout-model" style="margin: 40px; font-size: 20px;">
+                     <span class="list-span">
+                         <i class="fas fa-sign-out-alt" style="margin-top:20px;"></i>
+                     </span>
+                 </a>
+              </div>
+
+            <div id="rightpanel" style="float:right;">
+
+                <img src="<%= obj.photoname %>" onclick="" id="dpimage" style="height:40px;width: 40px;float:right;">
+
+                <span class="label label-warning" id="sadmin" style="float:right;">
+                    <%= obj.name %>
+                </span>
+
+            </div>
+        </div>
+
+</nav>

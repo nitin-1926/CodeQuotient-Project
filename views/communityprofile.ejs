@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CQ</title>
+        <meta name="viewport" content="width=device-width" initial-scale="1.0">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" >
+
+        <!-- BOOTSTRAP 3-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link href="/sidebar.css" rel="stylesheet" type = "text/css">
+        <link href="/header.css" rel="stylesheet" type = "text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <style>
+            #communityHeaderOfMobile
+            {
+                width: 100%;
+                text-align: center;
+                height: 80px;
+                background-image: linear-gradient(to bottom, #4ba2b7, #42a6be, #38aac6, #29adcd, #0fb1d5);
+
+            }
+            #askbtndiv
+            {
+                display : none;
+            }
+            #btnToJoin
+            {
+                color: #fff;
+                background: transparent;
+                border-color: #fff;
+            }
+            #headerCommImage1
+            {
+                height: 90px;
+                width: 90px;
+                position: relative;
+                margin-top: 25px;
+                margin-left: 0px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.6);
+            }
+
+            #mobileCq
+            {
+                font-size: 15px;
+                width: 80%;
+                margin: 0;
+                overflow: auto;
+                height: auto;
+                font-weight: bold;
+                display: block;
+                color: #fff;
+                text-transform: capitalize;
+            }
+            #communityHeaderOfLap
+            {
+                padding-top: 70px;
+            }
+            #lapDiv1
+            {
+                display:none;
+            }
+            #lapDiv2
+            {
+                display:none;
+            }
+            @media (min-width:768px)
+            {
+                #communityHeaderOfMobile
+                {
+                    height: 50px;
+                    width: 100%;
+                    background-image: linear-gradient(to bottom, #4ba2b7, #42a6be, #38aac6, #29adcd, #0fb1d5);
+
+                }
+                #communityHeaderOfLap
+                {
+                    padding-top: 0px;
+                }
+                #askbtndiv
+                {
+                    display : block !important;
+                }
+                #headerCommImage1
+                {
+                    display:none;
+                }
+                #headerCommImage2
+                {
+                    background: rgb(255, 255, 255) !important;
+                    height: 100px;
+                    width: 100px;
+                    z-index: 2;
+                    position: absolute;
+                    margin-top: -40px;
+                    border: 4px solid #fff;
+                    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+                }
+                #mobileCq
+                {
+                    display:none;
+                }
+                #lapDiv1
+                {
+                    display:block;
+                }
+                #lapDiv2
+                {
+                    display:block;
+                    /* margin-left:-25px; */
+                }
+                #lapDiv2
+                {
+                    z-index: 1;
+                    height: 60px;
+                    margin-top: 15px;
+                    font-size: 20px;
+                    font-family: 'Open Sans', sans-serif;
+                    text-transform: capitalize;
+                    font-weight: bold;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <% include partials/userheader.ejs %>
+            <div id="viewscreen">
+                <% include partials/usersidebar.ejs %>
+                    <div id="rightview">
+                        <div class="container-fluid" style="min-width:368px;padding:0;">
+                            <div class="row">
+                                <div class="col-lg-12" >
+                                    <div id="communityHeaderOfMobile" style="padding-top:6px;position:relative;">
+                                        <div class="container" id="askbtndiv">
+                                            <button class="btn btn-info" id="btnToJoin" style="float:right;border-radius:0">
+                                                <i class="fa fa-ask"></i>
+                                                <% if(commobj.communitymembershiprule=='Direct'){ %>
+                                                 Join
+                                                <% } else{ %>
+                                                 Ask To Join
+                                                <% } %>
+                                            </button>
+                                        </div>
+                                        <center>
+                                            <div id="mobileCq" style="max-height:40px;">
+                                                <a style="color:white;font-size: 15px;font-weight: bold;"><%= commobj.communityowner %></a>
+                                            </div>
+                                        </center>
+                                        <center>
+                                            <a>
+                                                <img src="<%= commobj.communityimage %>" id="headerCommImage1" >
+                                            </a>
+                                        </center>
+                                    </div>
+
+                                    <div  class="container" id="communityHeaderOfLap">
+                                        <div class="col-sm-2 col-xs-12"  id="lapDiv1">
+                                            <a><img src="<%= commobj.communityimage %>" id="headerCommImage2"></a>
+                                        </div>
+                                        <div class="col-sm-8" id="lapDiv2">
+                                          <a><%= commobj.communityowner %></a>
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <hr style="border-top: 2px solid #E6E6E6;  width: 85%; margin-top:0;" >
+                                    </center>
+
+                                    <!-- MAIN CONTENT OF PAGE BEGINS -->
+                                    <div class="container">
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="panel panel-default" style="border-radius:0;box-shadow: 0 3px 10px 0 rgba(115,143,147,.3)">
+                                                <div class="panel-body" style="border:0;border-radius:0">
+                                                    <div class="col-sm-12 col-xs-12 center-all">
+                                                        <center>
+                                                        <button class="btn btn-primary">
+                                                          <% if(commobj.communitymembershiprule=='Direct'){ %>
+                                                           Join
+                                                          <% } else{ %>
+                                                           Ask To Join
+                                                          <% } %>
+                                                        </button>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer">
+                                                    <p class="center-all" style="margin:0;" id="noOfmemebers">
+                                                        1 Members
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default" style="border-radius:0;box-shadow: 0 3px 10px 0 rgba(115,143,147,.3)">
+                                                <div class="panel-heading" style="border:0;border-radius:0">
+                                                    Community Managers
+                                                </div>
+                                                <div class="panel-body" style="border:0;border-radius:0">
+                                                    <div id="communityOwnerdetails">
+                                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xs-4 center-all">
+                                                                <a><img src="/defaultCommunity.jpg" style="width:50px;height:50px;border-radius:50%;"></a>
+                                                            </div>
+                                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xs-8" style="paddding:0;">
+                                                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="paddding:0;">
+                                                                    <span class="label label-success" style="margin-top:10px;">OWNER</span>
+                                                                </div>
+                                                                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="paddding:0;">
+                                                                    <a>Community Owner name</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-8 col-xs-12" style="padding:0 10px 10px 10px;">
+                                            <div class="panel panel-default" style="border-radius:0;box-shadow: 0 3px 10px 0 rgba(115,143,147,.3)">
+                                                <div class="panel-heading center-all" style="border:0;border-radius:0">
+                                                    About Community
+                                                </div>
+                                                <div class="panel-body" style="border:0;border-radius:0">
+                                                    <p id="communityDescriptionPara">
+                                                        Community Description
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+    </body>
+    <script src="/usersidebar.js"></script>
+    <script src="/communityprofile.js"></script>
+</html>

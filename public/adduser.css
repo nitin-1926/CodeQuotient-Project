@@ -1,0 +1,70 @@
+
+
+  .div-min-width {
+    min-width: 360px;
+  }
+    .div {
+      margin: auto;
+      margin-top: 3%;
+      /*display: block;*/
+      width: 45%;
+      /*margin-top: 4%;*/
+      border: 5px solid rgba(0, 0, 0, 0.1);
+      background-color: rgb(255, 255, 255);
+    }
+
+  .adduser-form {
+    padding-right: 15px;
+    padding-left: 15px;
+    font-family: Open-Sans,sans-serif;
+    }
+
+    h1 {
+    margin-bottom: 10px;
+    margin-top: 20px;
+    font-size: 36px;
+    font-weight: 500;
+    }
+
+    .input-field {
+      font-size: 14px;
+      width: 100%;
+      display: block;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      line-height: 1.42857143;
+
+      }
+
+    .submit-field {
+      margin-bottom: 20px;
+      padding: 6px 12px;
+      border-radius: 0;
+      font-weight: 400;
+      height: 35px;
+    }
+
+    #submit {
+      cursor: pointer;
+      color: #fff;
+      background-color: #5cb85c;
+      border-color: #4cae4c;
+      border: 1px solid transparent;
+      border-radius: 0;
+    }
+
+    #cancel {
+      cursor: pointer;
+      color: #fff;
+      background-color: #d9534f;
+      border-color: #d43f3a;
+      border: 1px solid transparent;
+      border-radius: 0;
+    }
+
+    .adduser {
+      background-color: #337AB6;
+      color: #FFFFFF;
+    }

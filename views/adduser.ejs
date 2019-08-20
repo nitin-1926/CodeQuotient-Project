@@ -1,0 +1,220 @@
+<!--
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <!-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <% include partials/commonhead.ejs %>
+    <link rel="stylesheet" href="adduser.css">
+    <link rel="stylesheet" href="common.css">
+    <title>CQ</title>
+  </head>
+  <body>
+
+      <% include partials/header.ejs %>
+
+    <div id="viewscreen">
+      <% include partials/sidebar.ejs %>
+      <div id="rightview">
+       <div class="container-fluid div-min-width" style="padding:0">
+              <div class="row">
+                <div class="col-lg-12" style="padding:0">
+                  <div class="container">
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-6" style="background-color:#fff;border:5px solid rgba(0,0,0,0.1);margin-top:40px">
+                      <br>
+                        <h1>Add User</h1>
+                          <form class="" action="/adduser" method="POST" >
+                            <div class="col-sm-12" >
+                              <div class="form-group">
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Name" required />
+                              </div>
+                              <br>
+
+                              <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Username" name="username" id="username" required />
+                              </div>
+                              <br>
+
+                              <div class="form-group">
+                                <input type="password" placeholder="Passsword" class="form-control" id="password" name="password" required />
+                              </div>
+                              <br>
+
+                              <div class="form-group">
+                                <input type="text" name="phone" placeholder="Phone" class="form-control" id="phone" required>
+                              </div>
+                              <br>
+
+                              <div class="form-group">
+                                <input type="text" placeholder="City" class="form-control" id="city" name="city" required>
+                              </div>
+
+
+                              <p style="font-weight:bold;">Role:</p>
+                              <div class="form-group">
+                                <select id="role" class="input-field" name="role" required>
+
+                                  <option value="user">User</option>
+                                  <option value="admin">Admin</option>
+                                  <option value="communitybuilder">Community Builder</option>
+                                </select>
+                              </div>
+
+                              <div class="form-group" style="display:inline-block;">
+                                <input type="submit" name="submit" value="Add User" class="btn btn-success" style="margin:1px" >
+                              </div>
+
+                              <div class="form-group" style="display:inline-block;">
+                                <input type="submit" onclick="openhomepage()" name="cancel" value="Cancel" class="btn btn-danger" style="margin:1px" >
+                              </div>
+                            </div>
+                          </form>
+
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <!--
+      <div class="container-fluid adduser-page" style="padding:0">
+              <div class="row">
+                <div class="col-lg-12 scoll-possible" style="padding:0">
+                  <div class="container">
+                    <div class="col-sm-6" style="background-color:#fff;border:5px solid rgba(0,0,0,0.1);margin-top:40px">
+                      <br>
+
+                        <h1>Add User</h1>
+                        <form action="/admin/adduser" method="POST" class="form-horizontal" id="form" autocomplete="nope" role="form">
+                          <div class="col-sm-12">
+                            <div class="form-group">
+                              <input type="text" required="" name="fullname" class="form-control" id="fullname" placeholder="Name" autocomplete="off"><br>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="email" required="" name="username" class="form-control" id="username" placeholder="Email" autocomplete="off" autocorrect="off"><br>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" required="" name="password" class="form-control" placeholder="User Password" autocomplete="new-password" autocorrect="off"><br>
+                            </div>
+
+                  <div class="form-group">
+                      <input type="text" required="" name="phone" class="form-control" maxlength="10" id="phone" placeholder="Phone" autocomplete="off"><br>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" required="" name="city" class="form-control" placeholder="City" autocomplete="false"><br>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Role:</label><br>
+                    <select data-style="btn-info" name="roleoptions" class="form-control">
+                        <optgroup label="Select User Role">
+                          <option value="user">User</option>
+                            <option value="commuity manager">Community Builder</option>
+                          <option value="admin">Admin</option>
+                        </optgroup>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                      <input type="submit" value="Add User" class="btn btn-success">
+                      <a value="Add User" class="btn btn-danger" href="/admin/profile">Cancel</a>
+                  </div>
+                  </div>
+                  </form>
+                  </div>
+                  </div>
+                  </div>
+                  </div>  Header
+                  <script src="/javascripts/Common.js"></script>
+
+                  <script>
+                  var selector = '.nav li';
+                  $(selector).removeClass('active');
+                  $('#add-user-nav').addClass('active');
+                  </script>
+
+                  <script>
+                  var userExist=false;
+                  function validatePhone(phone){
+                  var validity = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(phone);
+                  return validity;
+                  }
+                  $(document).ready(function(){
+                  $("#username").change(function(){
+                  if($('#username').val().trim())
+                  {
+                  var data=$('#username').val().trim().toLowerCase();
+                  $.ajax({
+                      type: 'POST',
+                      data: JSON.stringify({username:data}),
+                      contentType: 'application/json',
+                      url: '/admin/api/ExistenceUser',
+                      success: function (response) {
+                        console.log(response);
+                          if(response)
+                          {
+                            userExist=true;
+                            // $('#alert-div-avilability').removeClass('alert-success').addClass('alert-danger');
+                            $('#alert-div-avilability').css('display','block');
+                            $('#avilability').css("color", "#8B8B8B");
+                            $('#avilability').text("User "+data+" is already exist");
+                          }
+                          else{
+                            userExist=false;
+                            // $('#alert-div-avilability').removeClass('alert-danger').addClass('alert-success');
+                            $('#alert-div-avilability').css('display','block');
+                            $('#avilability').css("color", "#8B8B8B");
+                            $('#avilability').text(data+" is Avilable");
+                          }
+                      },
+                      error: function (response) {
+
+                      }
+                  });
+                  }
+                  else{
+                  $('#alert-div-avilability').css('display','none');
+                  }
+                  });
+                  });
+                  $('#form').submit(function () {
+
+                  if(userExist)
+                  {
+                  $.alert({
+                  title: 'Inavlid!',
+                  content: 'User already exist',
+                  });
+                  $('#username').val('');
+                  return false;
+                  }
+                  else {
+                  if(validatePhone($('#phone').val()))
+                  {
+                  return true;
+                  }
+                  else {
+                  $.alert({
+                  title: 'Inavlid! Phone Number',
+                  content: 'Phone number is not valid',
+                  });
+                  $('#phone').val('');
+                  return false;
+                  }
+                  }
+
+                  });
+                  </script>
+            </div>
+   </div> -->
+  </body>
+  <% include partials/js.ejs %>
+  <script type="text/javascript" src="adduser.js"></script>
+</html>
