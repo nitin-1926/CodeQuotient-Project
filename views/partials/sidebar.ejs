@@ -1,3 +1,4 @@
+<p style="display:none;"><%= obj.switch %></p>
   <div id="sidebar">
       <ul class="sidebar-list">
 
@@ -8,6 +9,7 @@
                   </center>
               </div>
           </li>
+
           <li class="list" id="bars">
           <a onclick="showsidebar()" id="open">
               <span class="list-span">
@@ -17,6 +19,7 @@
           </a>
           </li>
 
+          <% if(obj.switch == "admin") { %>
           <li class="list home">
               <a onclick="open_home_page()">
                   <span class="list-span">
@@ -35,7 +38,6 @@
               </a>
           </li>
 
-
           <li class="list userslist">
               <a onclick="open_userlist_page()">
                   <span class="list-span">
@@ -53,16 +55,39 @@
                   Community List
               </a>
           </li>
+          <% } %>
 
-          <li onclick="open_switchmodel_page()" class="list switchasuser" data-toggle="modal" data-target="#switch-model">
+          <% if(obj.switch == 'user') { %>
+            <li class="list home" onclick="editpage()">
+                <a>
+                    <span class="list-span">
+                        <i class="fas fa-user" id="icon"></i>
+                    </span>
+                     <%= obj.name %>
+                </a>
+            </li>
+
+            <li class="list communitypage" onclick="open_communities_page()">
+                <a>
+                    <span class="list-span">
+                        <i class="fas fa-users" id="icon"></i>
+                    </span>
+                    Communities
+                </a>
+            </li>
+
+            <% } %>
+
+          <li class="list switchasuser" onclick="open_switchmodel_page()"> <!-- data-toggle="modal" data-target="#switch-model"> -->
               <a>
                   <span class="list-span">
-                      <i class="fas fa-toggle-off" id="icon"></i>
+                      <i <% if(obj.switch == 'admin'){ %> class="fas fa-toggle-off" <% } %> <% if(obj.switch == 'user'){ %> class="fas fa-toggle-on" <% } %> id="icon"></i>
                   </span>
-                  Switch As User
+                  Switch As<% if(obj.switch == 'admin'){ %> User <% } %> <% if(obj.switch == 'user'){ %> Admin <% } %>
               </a>
           </li>
 
+          <% if(obj.switch == "admin") { %>
           <li class="list tagpanel">
               <a onclick="open_tag_page()">
                   <span class="list-span">
@@ -71,6 +96,7 @@
                   Tag Panel
               </a>
           </li>
+          <% } %>
 
           <li class="list changepassword">
               <a onclick="open_changepassword_page()">
@@ -81,7 +107,7 @@
               </a>
           </li>
 
-          <li class="list background" data-toggle="modal" data-target="#logout-model" >
+          <li class="list background" onclick="open_logout()"> <!-- data-toggle="modal" data-target="#logout-model" > -->
               <a>
                   <span class="list-span">
                       <i class="fas fa-sign-out-alt" id="icon"></i>
@@ -92,6 +118,3 @@
 
       </ul>
   </div>
-
-  <% include logoutmodel.ejs %>
-  <% include switchmodel.ejs %>

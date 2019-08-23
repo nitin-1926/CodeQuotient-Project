@@ -7,10 +7,10 @@
                 <div class="form-horizontal col-sm-3 col-md-3 col-lg-3"></div>
                 <div class="form-horizontal col-sm-6 col-md-6 col-lg-6">
                   <h3 class="page-header" style="color:#707070">Create Community</h3>
-                  <form action="/createcommunity" method="POST">
+                  <form action="/createcommunity" method="post"  >
 
                         <div class="form-group">
-                            <input class="form-control" type="text" required name="communityname" placeholder="Name" maxlength="70">
+                            <input class="form-control" type="text" name="communityname" placeholder="Name" maxlength="70">
                         </div>
 
                         <div class="form-group">
@@ -28,7 +28,7 @@
 
                          <div class="form-group">
                           <div class="col-xs-4 col-sm-3">
-                            <input type="file" class="btn btn-warning" name="myImage" accept="" value="Upload Image" >
+                            <input type="file" class="btn btn-warning" name="myImage"  value="Upload Image" >
                             <!-- <span class="btn btn-warning" onclick="">Upload Image</span> -->
                           </div>
                           <!-- <div class="col-xs-8 col-sm-9" style="overflow: scroll;white-space: nowrap;">

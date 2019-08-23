@@ -13,7 +13,7 @@
 
   function open_home_page()
   {
-      window.location = "/home"
+      window.location = "/profile"
   }
 
   function open_changepassword_page()
@@ -23,7 +23,7 @@
 
   function open_communities_page()
   {
-    window.location = '/home'
+    window.location = '/community/communitypanel'
   }
 
   function openeditpage()
@@ -33,5 +33,24 @@
 
   function open_logout()
   {
-    window.location = '/logout'
+    // window.location = '/logout'
+    $.confirm({
+      	title: 'Confirm Logout!',
+      	content: 'Do you really want logout?',
+      	draggable: true,
+        theme : 'supervan',
+     		buttons: {
+          Yes: {
+               btnClass: 'btn-success',
+              	action: function ()
+                {
+              	   window.location = '/logout'
+          	    }
+     		    },
+          No: {
+              btnClass: 'btn-danger',
+               action: function () {}
+     		   },
+      	}
+  		});
   }

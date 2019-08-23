@@ -1,0 +1,128 @@
+
+  <% include partials/commonhead.ejs %>
+  <link rel="stylesheet" href="/managecommunity.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/trumbowyg.css">
+  <script type="text/javascript" src="/trumbowyg.min.js"></script>
+  </head>
+  <body>
+      <% include partials/header.ejs %>
+      <p id="id" style="display:none;"><%= commobj.communityimage %></p>
+      <div id="viewscreen">
+        <% include partials/sidebar.ejs %>
+        <div id="rightview">
+          <div class="container-fluid div-min-width" style="padding:0; min-width:360px;">
+            <div class="row">
+              <div class="col-lg-12">
+                  <% include partials/commoncommunitytop.ejs %>
+
+                  <div class="container">
+                     <div style="margin-top:30px;">
+
+                       <div class="col-12">
+                             <div class="panel allSidesSoft">
+                                 <div class="panel-body">
+                                   <div class="d-flex">
+
+                                       <!-- <form class="image-container communitypicform" method="post" enctype="multipart/form-data" action="/community/editcommunity/<= commobj._id >"> -->
+                                         <form class="communitypicform" method="post" enctype="multipart/form-data" action="/community/editcommunity/<%= commobj._id %>" >
+                                           <img src="<%= commobj.communityimage  %>" id="community-profile-image" style="width: 150px; height: 150px" class="img-thumbnail allSidesSoft">
+                                           <div class="middle">
+                                               <label for="changeProfilePicBtn" class="btn btn-default btn-sm" style="width:30%">Change</label>
+                                               <input type="file" style="visibility:hidden;" id="changeProfilePicBtn" name="myImage" accept="image/*" >
+                                               <input type="submit" style="display:none;" class="btn btn-default btn-sm" id="submitImage" value="Confirm">
+                                           </div>
+                                       </form>
+
+                                       <div class="ml-auto">
+                                           <input type="button" style="display:none;" class="btn btn-danger btn-sm d-none" id="btnDiscard" value="Discard Changes">
+                                       </div>
+
+                                   </div>
+
+                                   <br>
+                                   <form class="communitypicform" method="post" action="/community/editcommunity/<%= commobj._id %>">
+                                     <div class="panel-group">
+                                       <div class="form-group">
+                                               <label>Community Name :</label>
+                                               <input type="text" value="<%= commobj.communityname %>" class="form-control" name="communityName" maxlength="70" required="">
+                                       </div>
+
+                                       <div class="form-group">
+                                           <label>Community Rule:</label>
+                                             <input type="text" class="form-control" value="Please do some action against pending requests to make community public" disabled="">
+
+                                       </div>
+
+                                       <div class="form-group">
+                                          <label>Community Description:</label>
+                                          <textarea name="communitydescription" type="text" id="communitydescription" class="form-control" value=""></textarea>
+                                      </div>
+
+                                      <div class="form-group">
+                                         <input type="submit" class="btn btn-primary pull-right btnEditForm" style="margin:1px" value="Update">
+                                      </div>
+                                   </form>
+                                 </div>
+                            </div>
+                         </div>
+                     </div>
+                   </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </body>
+  <script type="text/javascript" src="/sidebar.js"></script>
+  <!-- <script type="text/javascript" src="/manageCommunity.js"></script> -->
+  <script>
+
+    var filechange=0;
+
+    $(document).ready(function(){
+       $.trumbowyg.svgPath="/trumbowyg.svg"
+       $("#communitydescription").trumbowyg();
+       console.log("jhhhhhhhhhhh");
+       // $('#btnDiscard').hide();
+       // $('#submitImage').hide();
+    })
+
+    $("#changeProfilePicBtn").change(function()
+    {
+      // if($("label[for='changeProfilePicBtn']").html()=='Confirm')
+      // {
+      //     console.log(":img uploaded");
+      // }
+      // else {
+        readURL(this);
+        $("#changeProfilePicBtn").hide();
+        $("label[for='changeProfilePicBtn']").hide();
+        $('#submitImage').show();
+        $('#btnDiscard').show();
+        // $('#changeProfilePicBtn').attr('type','button');
+    });
+
+    $('#btnDiscard').click(function()
+    {
+      $('#btnDiscard').hide();
+      $('#submitImage').hide();
+      $("#changeProfilePicBtn").show();
+      $("label[for='changeProfilePicBtn']").show();
+      $('#community-profile-image').attr('src',$('#id').html());
+    })
+
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          $('#community-profile-image').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+  </script>
+  </html>

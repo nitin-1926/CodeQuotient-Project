@@ -15,16 +15,19 @@
     {
       if(request.responseText=="0")
       {
+    //    alertbox.setAttribute("display","block");
         if(document.getElementById("right"))
         {
           document.getElementById("right").style.display = "none";
         }
         document.getElementById("wrong").style.display = "block";
+        //document.getElementById("right").style.display = "none";
         old_password.value = ""
         new_password.value = ""
       }
       else
         {
+          //document.getElementById("wrong").style.display = "none";
           if(document.getElementById("wrong"))
           {
             document.getElementById("wrong").style.display = "none";
@@ -32,6 +35,8 @@
           document.getElementById("right").style.display = "block";
           old_password.value = ""
           new_password.value = ""
+          //alert("Password Changed Successfully")
+          //window.history.go(-1)
         }
     }
   }

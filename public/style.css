@@ -1,0 +1,18 @@
+.middle {
+    transition: .5s ease;
+    position: absolute;
+    opacity: 0;
+    top: 26%;
+    left: 19%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.middle:hover {
+  opacity: 1;
+}
+
+#community-profile-image:hover + .middle {
+    opacity: 1;
+}

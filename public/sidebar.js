@@ -1,7 +1,7 @@
 
-  var div = document.getElementById("sidebar")
   function showsidebar()
   {
+    console.log("sdjksdkjsdkjdskj");
     var element = document.getElementById("viewscreen");
     element.classList.toggle("toggle-pc");
 
@@ -35,11 +35,32 @@
 
   function open_switchmodel_page()
   {
-      document.getElementById("switchmodel-title").innerHTML="Switch as User"
-      document.getElementById("yes-switch").onclick = function()
-      {
-          window.location = '/switchcommunityhome'
-      }
+      // document.getElementById("switchmodel-title").innerHTML="Switch as User"
+      // document.getElementById("yes-switch").onclick = function()
+      // {
+      //     window.location = '/switchcommunityhome'
+      // }
+      let word = 'Admin';
+      if($('p').html()=='admin')
+      word = 'User';
+      $.confirm({
+          title: 'Switch As ' + word,
+        	content: 'Do you really want switch state...',
+        	draggable: true,
+       		buttons: {
+            Yes: {
+                 btnClass: 'btn-success',
+                	action: function ()
+                  {
+                	   window.location = '/switchcommunityhome'
+            	    }
+       		},
+            No: {
+                btnClass: 'btn-danger',
+                 action: function () {}
+       		},
+        	}
+    		});
   }
 
   function open_tag_page()
@@ -52,26 +73,42 @@
     window.location = '/changepassword'
   }
 
-  function open_logout()
+  function open_communities_page()
   {
-    window.location = '/logout'
+    console.log("here");
+    // return ;
+    window.location = '/home'
   }
 
+  function editpage()
+  {
+    window.location = '/editpage'
+  }
 
-/*
-  function switchState(e){
-  $.confirm({
-      title: e,
-      content: "Do you really want switch state...",
-      buttons: {
-          'Yes': {
-              btnClass: 'btn-success',
-              action: function () {
-                window.location.replace("/switchasuser");
-              }
-          },
-          'No': {btnClass: 'btn-danger',}
-      }
-  });
-}
-*/
+  function aslieditpage()
+  {
+    window.location = '/editinfo'
+  }
+
+  function open_logout()
+  {
+    $.confirm({
+      	title: 'Confirm Logout!',
+      	content: 'Do you really want logout?',
+      	draggable: true,
+        theme : 'supervan',
+     		buttons: {
+          Yes: {
+               btnClass: 'btn-success',
+              	action: function ()
+                {
+              	   window.location = '/logout'
+          	    }
+     		    },
+          No: {
+              btnClass: 'btn-danger',
+               action: function () {}
+     		   },
+      	}
+  		});
+  }

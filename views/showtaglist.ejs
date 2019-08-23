@@ -1,1 +1,48 @@
-      <% include partials/commonhead.ejs %>            <link rel="stylesheet" href="common.css">      <link rel="stylesheet" href="showtaglist.css">    </head>    <body>      <% include partials/header.ejs %>      <div id="viewscreen">        <% include partials/sidebar.ejs %>          <div id="rightview">            <div class="container-fluid div-min-width">              <div class="row">                <div class="col-lg-12">                  <div style="margin-left:20px;margin-right:20px;">                    <div id="container-parent">                      <div class="container" style="padding:0; margin-bottom:3%;">                        <div class="showuserslist-page-head-div">                          <div class="form-control" id="pagename-icon" style="width:80px;">Tag list</div>                          <button class="btn btn-default" style="float:right;background-color: #2D312C;color: #fff;">                              <span class="glyphicon glyphicon-refresh">                              </span>                              Refresh                          </button>                       </div>                       <br>                       <br>                       <br>                        <table id="tag-list" class="table table-striped table-bordered thead-light">                          <thead>                            <th>Tag Name</th>                            <th>Created By</th>                            <th>Create Day</th>                            <th>Action</th>                          </thead>                          <tbody id="data">                          </tbody>                        </table>                      </div>                    </div>                  </div>                </div>              </div>            </div>         </div>      </div>     </div>  </body>      <% include partials/js.ejs %>      <script type="text/javascript" src="showtaglist.js" ></script>      <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>  </html>
+    <% include partials/commonhead.ejs %>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="showtaglist.css">
+    </head>
+    <body>
+      <% include partials/header.ejs %>
+      <div id="viewscreen">
+        <% include partials/sidebar.ejs %>
+          <div id="rightview">
+            <div class="container-fluid div-min-width" style="padding:0">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div style="margin-left:20px;margin-right:20px;">
+                    <div id="container-parent">
+                      <div class="container" style="padding:0; margin-bottom:3%;">
+                        <div class="showuserslist-page-head-div">
+                          <div class="form-control" id="pagename-icon" style="width:80px;">Tag list</div>
+                          <button id="refresh" class="btn btn-default" style="float:right;background-color: #2D312C;color: #fff;">
+                              <span class="glyphicon glyphicon-refresh">
+                              </span>
+                              Refresh
+                          </button>
+                       </div>
+                       <br>
+                       <br>
+                       <br>
+
+                        <table id="tags-list" class="table table-striped table-bordered" style="display:table;width:100%">
+                          <thead>
+                            <th>Tag Name</th>
+                            <th>Created By</th>
+                            <th>Create Day</th>
+                            <th>Action</th>
+                          </thead>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+         </div>
+      </div>
+
+  </body>
+      <% include partials/js.ejs %>
+      <script type="text/javascript" src="showtaglist.js" ></script>
+</html>

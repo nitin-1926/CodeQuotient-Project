@@ -1,0 +1,53 @@
+
+  <% include partials/commonhead.ejs %>
+  <link rel="stylesheet" href="/managecommunity.css" />
+  <!-- <link rel="stylesheet" href="/memberscommunity.css" /> -->
+  </head>
+  <body>
+      <% include partials/header.ejs %>
+      <p id="id" style="display:none;"><%= commobj._id %></p>
+      <div id="viewscreen">
+        <% include partials/sidebar.ejs %>
+        <div id="rightview">
+          <div class="container-fluid div-min-width" style="padding:0; min-width:360px;">
+            <div class="row">
+              <div class="col-lg-12">
+                  <% include partials/commoncommunitytop.ejs %>
+
+              <div class="container">
+
+                <div style="margin-top:20px;margin-bottom:50px">
+
+                  <div class="col-sm-3 col-md-3 col-xs-4 col-lg-2">
+                    <a class="communitymembers-head-btn active-link-btn" onclick="showOwner()" id="admins-list-btn">
+                      Managers (<%= commobj.communitymanager.length %>)
+                    </a>
+                  </div>
+
+                <div class="col-sm-3 col-md-3 col-xs-4 col-lg-2">
+                  <a class="communitymembers-head-btn" onclick="showMembers()" id="users-list-btn">Members (<%= commobj.communitymember.length %>)</a>
+                </div>
+
+                <div class="col-sm-12">
+
+                    <div class="col-sm-12 col-xs-12 allcoms OwnerDivMain active-link-btn" style="margin-top: 5px;">
+
+                    </div>
+
+                    <div class="comUsersList">
+
+                   </div>
+
+                </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </body>
+  <script type="text/javascript" src="/sidebar.js"></script>
+  <script type="text/javascript" src="/Communitymembers.js"></script>
+  </html>

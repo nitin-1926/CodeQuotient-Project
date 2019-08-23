@@ -3,13 +3,13 @@
         <li class="list" id="mobile-pic">
             <div style="margin-right:10px">
                 <center>
-                    <img src="dp.png" id="mobile-img">
+                    <img src=<%= obj.photoname %> id="mobile-img">
                 </center>
             </div>
         </li>
 
-        <li class="list" id="bars">
-        <a onclick="showsidebar()" id="open">
+        <li class="list" id="bars" onclick="showsidebar()">
+        <a id="open">
             <span class="list-span">
                 <i class="fas fa-bars" id="icon"></i>
             </span>
@@ -17,8 +17,8 @@
         </a>
         </li>
 
-        <li class="list home">
-            <a onclick="open_home_page()">
+        <li class="list home" onclick="open_home_page()">
+            <a>
                 <span class="list-span">
                     <i class="fas fa-user" id="icon"></i>
                 </span>
@@ -26,8 +26,8 @@
             </a>
         </li>
 
-        <li class="list communitypage">
-            <a onclick="open_communities_page()">
+        <li class="list communitypage" onclick="open_communities_page()">
+            <a>
                 <span class="list-span">
                     <i class="fas fa-users" id="icon"></i>
                 </span>
@@ -35,8 +35,8 @@
             </a>
         </li>
 
-        <li class="list switchadmin" data-toggle="modal" data-target="#switch-model">
-            <a onclick="open_switchmodel_page()">
+        <li class="list switchadmin" onclick="open_switchmodel_page()">
+            <a>
                 <span class="list-span">
                     <i class="fas fa-toggle-on" id="icon"></i>
                 </span>
@@ -44,8 +44,8 @@
             </a>
         </li>
 
-        <li class="list changepassword">
-            <a onclick="open_changepassword_page()">
+        <li class="list changepassword" onclick="open_changepassword_page()">
+            <a>
                 <span class="list-span">
                     <i class="fas fa-lock" id="icon"></i>
                 </span>
@@ -53,7 +53,7 @@
             </a>
         </li>
 
-        <li class="list" data-toggle="modal" data-target="#logout-model" >
+        <li class="list" onclick="open_logout()">
             <a>
                 <span class="list-span">
                     <i class="fas fa-sign-out-alt" id="icon"></i>
@@ -63,6 +63,3 @@
         </li>
     </ul>
 </div>
-
-<% include logoutmodel.ejs %>
-<% include switchmodel.ejs %>

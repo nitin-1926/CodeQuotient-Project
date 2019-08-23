@@ -1,0 +1,141 @@
+#communityHeaderOfMobile
+{
+    width: 100%;
+    text-align: center;
+    height: 80px;
+    background-image: linear-gradient(to bottom, #4ba2b7, #42a6be, #38aac6, #29adcd, #0fb1d5);
+
+}
+#askbtndiv
+{
+    display : none;
+}
+#btnToJoin
+{
+    color: #fff;
+    background: transparent;
+    border-color: #fff;
+}
+#headerCommImage1
+{
+    height: 90px;
+    width: 90px;
+    position: relative;
+    margin-top: 25px;
+    margin-left: 0px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+#mobileCq
+{
+    font-size: 15px;
+    width: 80%;
+    margin: 0;
+    overflow: auto;
+    height: auto;
+    font-weight: bold;
+    display: block;
+    color: #fff;
+    text-transform: capitalize;
+}
+#communityHeaderOfLap
+{
+    padding-top: 70px;
+}
+#lapDiv1
+{
+    display:none;
+}
+#lapDiv2
+{
+    display:none;
+}
+@media (min-width:768px)
+{
+    #communityHeaderOfMobile
+    {
+        height: 50px;
+        width: 100%;
+        background-image: linear-gradient(to bottom, #4ba2b7, #42a6be, #38aac6, #29adcd, #0fb1d5);
+
+    }
+    #communityHeaderOfLap
+    {
+        padding-top: 0px;
+    }
+    #askbtndiv
+    {
+        display : block !important;
+    }
+    #headerCommImage1
+    {
+        display:none;
+    }
+    #headerCommImage2
+    {
+        background: rgb(255, 255, 255) !important;
+        height: 100px;
+        width: 100px;
+        z-index: 2;
+        position: absolute;
+        margin-top: -40px;
+        border: 4px solid #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+    #mobileCq
+    {
+        display:none;
+    }
+    #lapDiv1
+    {
+        display:block;
+    }
+    #lapDiv2
+    {
+        display:block;
+        /* margin-left:-25px; */
+    }
+    #lapDiv2
+    {
+        z-index: 1;
+        height: 60px;
+        margin-top: 15px;
+        font-size: 20px;
+        font-family: 'Open Sans', sans-serif;
+        text-transform: capitalize;
+        font-weight: bold;
+    }
+}
+
+.adminInfo {
+    padding: 0px;
+}
+
+.center-all {
+    text-align: -webkit-center !important;
+}
+
+.adminPic {
+    background: rgb(255, 255, 255) !important;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+}
+.allSides {
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+.adminContent {
+    margin-top: 10px;
+}
+
+.communityProfileUserImage {
+    background: rgb(255, 255, 255) !important;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}

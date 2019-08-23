@@ -1,18 +1,25 @@
-<% include partials/commonhead.ejs %>
-    <link rel="stylesheet" href="switchcommunityhome.css">
+
+    <% include partials/commonhead.ejs %>
     <style>
       #searchCommunitybox {
         display: none;
       }
     </style>
+    <link rel="stylesheet" href="/switchcommunityhome.css">
       </head>
       <body>
         <% include partials/header.ejs %>
         <div id="viewscreen">
-            <% include partials/switchsidebar.ejs %>
-            <% include partials/commoncommunityhome.ejs %>
+            <% include partials/sidebar.ejs %>
+            <% include partials/commoncommunity.ejs %>
          </div>
       </body>
-      <script type="text/javascript" src="switchsidebar.js"></script>
-      <script type="text/javascript" src="switchcommunityhome.js"></script>
+      <script type="text/javascript" src="/sidebar.js"></script>
+      <script type="text/javascript" src="/switchcommunityhome.js"></script>
+      <script type="text/javascript">
+        window.onload = function()
+        {
+          console.log(":djkdskj")
+        }
+      </script>
       </html>

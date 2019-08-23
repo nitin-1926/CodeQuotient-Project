@@ -1,0 +1,83 @@
+
+  <% include partials/commonhead.ejs %>
+  <link rel="stylesheet" href="/managecommunity.css" />
+  </head>
+  <body>
+      <% include partials/userheader.ejs %>
+      <p id="id" style="display:none;"><%= commobj._id %></p>
+      <div id="viewscreen">
+        <% include partials/usersidebar.ejs %>
+        <div id="rightview">
+          <div class="container-fluid div-min-width" style="padding:0; min-width:360px;">
+            <div class="row">
+              <div class="col-lg-12">
+                  <% include partials/commoncommunitytop.ejs %>
+
+                  <div class="container">
+                    <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12" style="padding-bottom:5px;border-bottom:1px solid #c4c4c4">
+                        <nonlink class="manageCommunity-head-btn" style="cursor: context-menu;">
+                          Manage Community
+                        </nonlink>
+                        <a href="#" style="float:right;font-weight:600">
+                          Invite Users
+                        </a>
+
+                        <a class="pc" href="#" style="float:right;font-weight:600;margin-right:15px">
+                          Edit Community
+                        </a>
+                    </div>
+
+                    <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12" style="padding:10px 0 0 0;">
+
+                      <div class="col-sm-3 manageCommunity-commuity-div" style="padding:0">
+
+                        <div class="panel-heading allSidesSoft center-all mobile" style="background:#fff;margin-bottom:5px">
+                            <a class="btn btn-primary editcommunity-btn">
+                              Edit Commuity
+                            </a>
+                        </div>
+
+                        <div class="panel-body allSidesSoft" style="background:#fff;">
+                            <a class="manageCommunity-child-btn manageCommunity-btn-active" onclick="showUsers()" id="UsersShowBtn">
+                              Users (<%=commobj.communitymember.length%>)
+                            </a>
+                            <br>
+                            <a class="manageCommunity-child-btn" onclick="showManager()" id="AdminsShowBtn">
+                                Managers (0)
+                            </a>
+
+                            <br>
+                            <a class="manageCommunity-child-btn" onclick="showRequest()" id="requestedUserShowBtn">
+                              Requests (<%=commobj.communityrequest.length%>)
+                            </a>
+
+                            <br>
+                            <a class="manageCommunity-child-btn" onclick="showInvitation()" id="invitedUserShowBtn">
+                              Invited Members (<%=commobj.invitations.length%>)
+                            </a>
+                        </div>
+                        <br>
+                      </div>
+                      <div class="col-sm-9">
+                        <div id="userlist">
+                        </div>
+                        <div id="managerlist">
+                        </div>
+                        <div id="requestlist">
+                        </div>
+                        <div id="invitationlist">
+                        </div>
+                      </div>
+
+                  </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </body>
+  <script type="text/javascript" src="/usersidebar.js"></script>
+  <script type="text/javascript" src="/manageCommunity.js"></script>
+  </html>

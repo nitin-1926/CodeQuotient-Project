@@ -1,0 +1,71 @@
+<div id="communityHeaderOfMobile" style="padding-top:6px;position:relative;">
+    <!-- <div class="container" id="askbtndiv">
+        <button class="btn btn-info" id="btnToJoin" style="float:right;border-radius:0">
+            <i class="fa fa-ask"></i>
+            <% if(commobj.communitymembershiprule=='Direct'){ %>
+             Join
+            <% } else{ %>
+             Ask To Join
+            <% } %>
+        </button>
+    </div> -->
+    <center>
+        <div id="mobileCq" style="max-height:40px;">
+            <a style="color:white;font-size: 15px;font-weight: bold;"><%= commobj.communityowner %></a>
+        </div>
+    </center>
+    <center>
+        <a href="/community/communityprofile/<%= commobj._id %>">
+            <img src="<%= commobj.communityimage %>" id="headerCommImage1" >
+        </a>
+    </center>
+</div>
+
+<div  class="container" id="communityHeaderOfLap">
+    <div class="col-sm-2 col-xs-12"  id="lapDiv1">
+        <a href="/community/communityprofile/<%= commobj._id %>"><img src="<%= commobj.communityimage %>" id="headerCommImage2"></a>
+    </div>
+    <div class="col-sm-8" id="lapDiv2">
+      <a href="/community/communityprofile/<%= commobj._id %>" ><%= commobj.communityname %></a>
+    </div>
+    <div class="col-sm-2 col-xs-12 center-mobile" style="padding-top:10px;float:right">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle commuity-profile-menu-btn" type="button" data-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-bars"></i>
+            </button>
+            <ul class="dropdown-menu custom-commuity-dropdown dropdown-menu-right" style="margin-top:40px">
+                <li>
+                    <a href="/community/discussions/<%=commobj._id%>" class="community-profile-option-btn">
+                      Discussions
+                    </a>
+                </li>
+
+
+
+                <li>
+                    <a href="/community/managecommunity/<%=commobj._id%>" class="community-profile-option-btn">
+                      Manage Community
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="/community/communityprofile/<%=commobj._id%>" class="community-profile-option-btn">
+                      Community Profile
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/community/communitymembers/<%=commobj._id%>" class="community-profile-option-btn">
+                      Community Members
+                    </a>
+                </li>
+
+              </ul>
+        </div>
+    </div>
+</div>
+
+<center>
+    <hr style="border-top: 2px solid #E6E6E6;  width: 85%; margin-top:0;" >
+</center>

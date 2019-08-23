@@ -11,18 +11,36 @@
       element.classList.toggle("set-rightview");
   }
 
+  function editpage()
+  {
+    window.location = '/profile'
+  }
+
   function open_home_page()
   {
-      window.location = "/home"
+      window.location = "/profile"
   }
 
   function open_switchmodel_page()
   {
-    document.getElementById("switchmodel-title").innerHTML="Switch as Admin"
-    document.getElementById("yes-switch").onclick = function()
-    {
-        window.location = '/changeswitch'
-    }
+    $.confirm({
+        title: 'Switch Admin',
+        content: 'Do you really want switch state...',
+        draggable: true,
+        buttons: {
+          Yes: {
+               btnClass: 'btn-success',
+                action: function ()
+                {
+                   window.location = '/changeswitch'
+                }
+        },
+          No: {
+              btnClass: 'btn-danger',
+               action: function () {}
+        },
+        }
+      });
   }
 
   function open_communities_page()
@@ -37,5 +55,23 @@
 
   function open_logout()
   {
-    window.location = '/logout'
+    $.confirm({
+      	title: 'Confirm Logout!',
+      	content: 'Do you really want logout?',
+      	draggable: true,
+        theme : 'supervan',
+     		buttons: {
+          Yes: {
+               btnClass: 'btn-success',
+              	action: function ()
+                {
+              	   window.location = '/logout'
+          	    }
+     		    },
+          No: {
+              btnClass: 'btn-danger',
+               action: function () {}
+     		   },
+      	}
+  		});
   }

@@ -1,0 +1,207 @@
+
+  .manageCommunity-child-btn {
+    width: 80%;
+    color: #848484;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 4px;
+    margin-top: 2px;
+    text-decoration: none;
+  }
+
+  .manageCommunity-btn-active {
+    color: #1C73DD !important;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .community-user-short-btn {
+    margin-top: 20px;
+    color: #7D7D7D;
+    font-size: 20px;
+    text-decoration: none;
+    text-transform: capitalize;
+    cursor: pointer;
+  }
+
+  .request-btn-dropdown {
+    margin-top: 15px;
+    color: #7D7D7D;
+    font-size: 20px;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+
+  .community-user-div {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .community-member-pic {
+    height: 50px;
+    width: 50px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  }
+
+  .comusername {
+    margin-top: 20px;
+    font-weight: bold;
+    /* color: #7D7D7D; */
+    font-size: 18px;
+    display: inline-block;
+    text-decoration: none;
+    white-space: nowrap;
+    text-transform: capitalize;
+  }
+
+  .allSidesSoft {
+      box-shadow: 0 3px 10px 0 rgba(115,143,147,.3);
+  }
+
+  .commuity-profile-menu-btn {
+      margin-bottom: 5px;
+      float: right;
+      border: 2px solid #D1CFCF;
+    }
+
+    .pc {
+      display:none;
+    }
+
+    .mobile {
+      display:block;
+      text-align:center;
+    }
+
+    #communityHeaderOfMobile
+    {
+        width: 100%;
+        text-align: center;
+        height: 80px;
+        background-image: linear-gradient(to bottom, #4ba2b7, #42a6be, #38aac6, #29adcd, #0fb1d5);
+
+    }
+    #askbtndiv
+    {
+        display : none;
+    }
+    #btnToJoin
+    {
+        color: #fff;
+        background: transparent;
+        border-color: #fff;
+    }
+    #headerCommImage1
+    {
+        height: 90px;
+        width: 90px;
+        position: relative;
+        margin-top: 25px;
+        margin-left: 0px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+
+    #mobileCq
+    {
+        font-size: 15px;
+        width: 80%;
+        margin: 0;
+        overflow: auto;
+        height: auto;
+        font-weight: bold;
+        display: block;
+        color: #fff;
+        text-transform: capitalize;
+    }
+    #communityHeaderOfLap
+    {
+        padding-top: 70px;
+    }
+    #lapDiv1
+    {
+        display:none;
+    }
+    #lapDiv2
+    {
+        display:none;
+    }
+    @media (min-width:768px)
+    {
+
+      .pc {
+        display : block;
+      }
+
+      .mobile {
+        display : none;
+      }
+
+        #communityHeaderOfMobile
+        {
+            height: 50px;
+            width: 100%;
+            background-image: linear-gradient(to bottom, #4ba2b7, #42a6be, #38aac6, #29adcd, #0fb1d5);
+
+        }
+        #communityHeaderOfLap
+        {
+            padding-top: 0px;
+        }
+        #askbtndiv
+        {
+            display : block !important;
+        }
+        #headerCommImage1
+        {
+            display:none;
+        }
+        #headerCommImage2
+        {
+            background: rgb(255, 255, 255) !important;
+            height: 100px;
+            width: 100px;
+            z-index: 2;
+            position: absolute;
+            margin-top: -40px;
+            border: 4px solid #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.6);
+        }
+        #mobileCq
+        {
+            display:none;
+        }
+        #lapDiv1
+        {
+            display:block;
+        }
+        #lapDiv2
+        {
+            display:block;
+        }
+        #lapDiv2
+        {
+            z-index: 1;
+            height: 60px;
+            margin-top: 15px;
+            font-size: 20px;
+            font-family: 'Open Sans', sans-serif;
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+      }
+
+      .active-link-btn {
+    color: rgb(73, 73, 73) !important;
+    }
+
+
+  .communitymembers-head-btn {
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 4px;
+      margin-top: 2px;
+  }

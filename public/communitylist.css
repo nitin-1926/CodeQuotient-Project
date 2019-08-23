@@ -27,6 +27,20 @@
 
 }
 
+.CommunityProfilePic {
+    height: 100px;
+    width: 100px;
+    float: left;
+}
+
+#CommunityInfoPop {
+    margin-left: 20%;
+    margin-top: 7%;
+    font-weight: bold;
+    font-size: 15px;
+    word-wrap: break-word;
+}
+
 @media (max-width:768px)
 {
     .div-min-width {
