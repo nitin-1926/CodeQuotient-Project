@@ -361,7 +361,7 @@
       }
     })
 
-    app.get('/adduser',logger,function(req,res)
+    app.get('/adduser',logger,logger2,function(req,res)
     {
         res.render('adduser',{obj : req.session.data});
     })
@@ -475,13 +475,13 @@
           }
     })
 
-    app.get('/userslist',logger,function(req,res)
+    app.get('/userslist',logger,logger2,function(req,res)
     {
       console.log(req.body);
         res.render('userslist',{obj : req.session.data});
     })
 
-    app.get('/communitylist',logger,logger,function(req,res)
+    app.get('/communitylist',logger,logger2,function(req,res)
     {
         res.render('communitylist',{ obj: req.session.data });
     })
@@ -886,7 +886,7 @@
       })
     })
 
-    app.get('/tagpanel',logger,function(req,res)
+    app.get('/tagpanel',logger,logger2,function(req,res)
     {
       res.render('tagpanel',{obj : req.session.data})
     })
@@ -917,7 +917,7 @@
       })
     })
 
-    app.get('/showtaglist',logger,function(req,res)
+    app.get('/showtaglist',logger,logger2,function(req,res)
     {
       res.render('showtaglist',{obj : req.session.data})
     })
@@ -971,7 +971,7 @@
         })
     })
 
-    app.get('/changeswitch',logger,function(req,res)
+    app.get('/changeswitch',logger,logger2,function(req,res)
     {
         req.session.data.switch = 'admin'
         product.updateOne({ "_id" : req.session.data._id } , { $set : { "switch" : "admin" } } ,function(error,result)
@@ -983,7 +983,7 @@
         })
     })
 
-    app.get('/switchcommunityhome',logger,function(req,res)
+    app.get('/switchcommunityhome',logger,logger2,function(req,res)
     {
       // if(req.session.data.role!='communitybuilder')
       // {
@@ -1101,7 +1101,7 @@
 
     function getMonths(monthno)
     {
-      var month=["Jan","Feb","Mar","Apr","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      var month=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
       return month[monthno];
     }
 
@@ -1594,6 +1594,7 @@
       res.render('login');
     })
 
+//MIDDLEWARE FUNCTIONS
     function logger(req,res,next)
     {
       // console.log("------------logger chla dekho---------------");
@@ -1605,3 +1606,14 @@
           res.redirect('/');
       }
     }
+	function logger2(req,res,next)
+	    {
+	      // console.log("------------logger2 chla dekho---------------");
+	      if(req.session.data.role = 'admin')
+	      {
+	        next();
+	      }
+	      else {
+	          res.redirect('/');
+	      }
+	    }
