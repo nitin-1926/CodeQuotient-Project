@@ -737,34 +737,25 @@ var storage = multer.diskStorage({
 
 var upload = multer({
   storage : storage,
-  // limits : {
-  //   fileSize : 100000
-  // }
 }).single('myImage');
 
 app.post('/upload',(req,res) => {
-  console.log("req body mein "+req.body);
   upload(req,res,(err)=>{
     if(err)
     {
       throw err;
     }
     else{
-      console.log(req.file);
-      console.log(photoname);
-      console.log(req.session.data._id);
 
       product.updateOne({ "_id" : req.session.data._id } , { $set : { "photoname" : photoname } }  ,function(error,result)
       {
           console.log(result);
           if(error)
           {
-            console.log("error vale mai");
             throw error;
           }
           else
           {
-            console.log("update vale mai");
             req.session.data.photoname = photoname;
             if(req.session.data.status == "pending")
             res.render('updatefirst' , { obj : req.session.data } );
@@ -772,11 +763,7 @@ app.post('/upload',(req,res) => {
             {
                 if(req.session.data.role=='admin')
                 {
-                    // if(req.session.data.switch=="admin")
                     res.render('editinfo' , { obj : req.session.data } );
-                    // else {
-                    //   res.render('switcheditinfo' , { obj : req.session.data } );
-                    // }
                 }
                 else {
                     res.render('usereditinfo' , { obj : req.session.data } );
@@ -790,14 +777,13 @@ app.post('/upload',(req,res) => {
 
 app.post('/updateuser',function(req,res)
 {
-  console.log(req.body);
   product.updateOne({"_id":req.body._id},{ $set : req.body} ,function(error,result)
   {
     if(error)
     throw error
     else
     {
-      res.send("DATA UPDATED SUCCESFULLY")
+      res.send("DATA UPDATED")
     }
   })
 })
@@ -827,7 +813,6 @@ app.post('/deleteTag',function(req,res)
     if(error)
     throw error;
     else {
-      console.log(result);
       res.end();
     }
   })
@@ -838,24 +823,9 @@ app.get('/showtaglist',logger,logger2,function(req,res)
   res.render('showtaglist',{obj : req.session.data})
 })
 
-// app.post('/deletetag',function(req,res)
-// {
-//   tag.deleteOne({ "_id": req.body}, function(err,result)
-//   {
-//     if(err)
-//     throw err;
-//     else
-//     {
-//       console.log("deleted");
-//       res.end();
-//     }
-//   })
-// })
-
 app.post('/edituserinfo',function(req,res)
 {
     var obj = req.body;
-    console.log(req.session.data._id);
     product.updateOne({ "_id" : req.session.data._id } , { $set : { "name" : obj.name , "dob" : obj.dob , "gender" : obj.gender , "phone" : obj.phone , "city" : obj.city , "status" : "confirmed" , "interests" : obj.interests , "journey" : obj.journey , "expectations" : obj.expectations  } }  ,function(error,result)
     {
       if(error)
@@ -901,8 +871,6 @@ app.get('/changeswitch',logger,logger2,function(req,res)
 
 app.get('/switchcommunityhome',logger,logger2,function(req,res)
 {
-  // if(req.session.data.role!='communitybuilder')
-  // {
   if(req.session.data.switch == 'admin')
   {
     req.session.data.switch = 'user'
@@ -912,7 +880,6 @@ app.get('/switchcommunityhome',logger,logger2,function(req,res)
       throw error;
       else
       {
-          // res.render('switchcommunityhome' , { obj: req.session.data })
           res.redirect('/community/communitypanel');
       }
     })
@@ -925,14 +892,10 @@ app.get('/switchcommunityhome',logger,logger2,function(req,res)
       throw error;
       else
       {
-          // res.render('switchcommunityhome' , { obj: req.session.data })
-          res.redirect('/home');
+         res.redirect('/home');
       }
     })
   }
-//   }
-// else
-// res.render('communitybuilder' , { obj: req.session.data })
 })
 
 app.get('/community/switchcreatecommunity',logger,function(req,res)
@@ -948,31 +911,23 @@ app.post('/createcommunity',function(req,res)
 {
   if(!req.body.communityname)
   {
-    // console.log("fghjkjhghjjkhjgh");
-    res.send("no dataa");
+    res.send("no data");
   }
   else {
-    console.log(req.body);
-    // res.render('switchcreatecommunity',{ obj : req.session.data });
     if(req.body.myImage)
     {
-      console.log("photo haiiiiiiii");
        upload(req,res,(err)=>
        {
          if(err)
          throw err;
          else {
-           console.log(photoname);
            req.body.communityimage = photoname;
-           console.log("photo   pdgi");
              createcommunity(req)
          }
        })
-      // createcommunity(req)
     }
     else 
     {
-      // res.send("creating commuity");
       createcommunity(req)
       if(req.session.data == 'admin')
       res.render('switchcreatecommunity',{ obj : req.session.data });
@@ -985,7 +940,6 @@ app.post('/createcommunity',function(req,res)
 
 function createcommunity(req)
 {
-
     var cid;
     var obj = req.body;
     console.log(obj);
@@ -996,13 +950,11 @@ function createcommunity(req)
     obj.communitycreatedate = dd + "-" + mm + "-" + yyyy
     obj.communityowner = req.session.data.name;
     obj.communityownerid = req.session.data._id;
-    // obj.communitylocation = "Not Added"
     community.create(obj,function(err,result)
     {
         if(err)
         throw err;
         else {
-        //  cid = result._id;
           product.updateOne(  { "_id" : req.session.data._id } , { $push : { owned : result._id } } , function(err,result)
           {
               if(err)
@@ -1053,14 +1005,6 @@ app.get('/ownedCommunities',logger,function(req,res)
     })
 })
 
-// comminstance.find({ $and: [{ ownerid : { $not : { $eq : req.session.data._id }}},{commjoin : {$nin : [req.session.data._id] }},{commasktojoin : {$nin : [req.session.data._id] }}] }).exec(function(error,result){
-//     if(error)
-//     throw error;
-//     else {
-//         res.send(JSON.stringify(result));
-//     }
-// })
-
 app.post('/updateCommunity',function(req,res)
 {
     community.updateOne( { "_id" : req.body._id } , {  $set : req.body }, function(err,result)
@@ -1075,7 +1019,6 @@ app.post('/updateCommunity',function(req,res)
 
 app.post('/community/editcommunity/:pro',function(req,res)
 {
-  // console.log("req body mein "+req.body);
   upload(req,res,(err)=>{
     if(err)
     {
@@ -1083,18 +1026,12 @@ app.post('/community/editcommunity/:pro',function(req,res)
     }
     else
     {
-      console.log(req.file);
-      console.log(photoname);
-      // console.log(req.session.data._id);
-
       community.updateOne({ "_id" : req.params.pro }, { $set : { "communityimage" : photoname } },function(error,result)
       {
           if(error)
           throw error;
           else {
-            console.log("updated");
             res.redirect('/community/editcommunity/'+req.params.pro+'');
-            // res.send("DONE");
           }
       })
     }
@@ -1103,17 +1040,14 @@ app.post('/community/editcommunity/:pro',function(req,res)
 
 app.post('/freeCommunities',function(req,res)
 {
-  console.log(req.body);
   let start = req.body.start;
   let end = req.body.end;
-  // console.log("------------"+start,end);
   let findobj = { $and : [{ communityownerid : { $not : { $eq : req.session.data._id } } },{ communitymember : { $nin : [req.session.data._id] } },{ communityrequest : { $nin : [req.session.data._id] } }] };
   community.find( findobj ).skip(start).limit(end).exec(function(error,result) {
     {
       if(error)
       throw error;
       else {
-        console.log(result);
         res.send(result);
       }
     }
@@ -1132,7 +1066,6 @@ app.post('/djoin',function(req,res)
           if(error)
           throw error;
           else {
-            console.log("hogyajbkbkjjkbkbkj");
             res.end();
           }
         })
@@ -1152,7 +1085,6 @@ app.post('/pjoin',function(req,res)
             if(error)
             throw error;
             else {
-              console.log("hogyajbkbkjjkbkbkj");
               res.end();
             }
           })
@@ -1162,7 +1094,6 @@ app.post('/pjoin',function(req,res)
 
 app.post('/cancelRequest',function(req,res)
 {
-    console.log("aagya");
     community.updateOne({ "_id" : req.body._id },{ $pull : { communityrequest : { $in : [req.session.data._id]}}} ,function(error,result){
      if(error)
      throw error;
@@ -1183,14 +1114,12 @@ app.post('/getMembers',function(req,res)
     var query = [{path : 'communityownerid' , select : { 'name' : 1 , 'photoname' : 1 } },{path : 'communitymember' , select : { 'name' : 1 , 'photoname' : 1 } },{ path : 'communityrequest' , select : { 'name' : 1 , 'photoname' : 1 } },{ path : 'invitations' , select : { 'name' : 1 , 'photoname' : 1 } },{ path : 'communitymanager' , select : { 'name' : 1 , 'photoname' : 1 } } ];
     community.findOne({ "_id" : req.body._id }).populate( query ).exec(function (err, person) {
     if (err) throw err;
-    // console.log(person);
     res.send(person);
   });
 });
 
 app.get('/community/communitypanel',logger,function(req,res)
 {
-    // console.log("/community/communitypanel");
     if(req.session.data.role=='admin')
     {
       res.render('switchcommunityhome',{ obj : req.session.data });
@@ -1207,7 +1136,6 @@ app.get('/community/communitypanel',logger,function(req,res)
 
 app.post('/acceptRequest',function(req,res)
 {
-  console.log(req.body);
   community.updateOne( { "_id" : req.body.commid } , {  $push : { communitymember : req.body.userid } , $pull : { communityrequest : { $in : [req.body.userid] } }  },function(err,result)
   {
       if(err)
@@ -1227,7 +1155,6 @@ app.post('/acceptRequest',function(req,res)
 
 app.post('/rejectRequest',function(req,res)
 {
-  console.log(req.body);
   community.updateOne( { "_id" : req.body.commid } , { $pull : { communityrequest : { $in : [req.body.userid] } }  },function(err,result)
   {
       if(err)
@@ -1321,11 +1248,9 @@ app.get('/community/list',logger,function(req,res)
 app.get('/community/communityprofile/:pro',logger,function(req,res)
 {
     var id = req.params.pro;
-    console.log(id);
     var query = [{path : 'communityownerid' , select : { 'name' : 1 , 'photoname' : 1 } },{path : 'communitymember' , select : { 'name' : 1 , 'photoname' : 1 } },{ path : 'communitymanager' , select : { 'name' : 1 , 'photoname' : 1 } } ];
     community.findOne({ "_id" : id }).populate( query ).exec(function (err, person) {
         if (err) throw err;
-        console.log(person);
         res.render('switchcommunityprofile',{ obj: req.session.data, commobj: person });
     });
 })
