@@ -258,7 +258,6 @@ app.get('/notactive',logger,function(req,res)
 
 app.get('/home',logger,function(req,res)
 {
-    //console.log(req.session.data);
     if(req.session.data.status == 'pending')
     {
       res.render('updatefirst',{obj : req.session.data})
@@ -276,14 +275,13 @@ app.get('/home',logger,function(req,res)
         }
         else if(req.session.data.role=='communitybuilder')
         {
-          // console.log("hye---------------");
           res.redirect('/community/communitypanel');
         }
         else if(req.session.data.role=='user') {
           res.render('userprofile',{obj : req.session.data});
         }
         else {
-          res.send("No Page For U");
+          res.send("404 Not Found");
         }
     }
 })
@@ -344,22 +342,14 @@ app.get('/adduser',logger,logger2,function(req,res)
 
 app.post('/adduser',function(req,res)
 {
-    //console.log(req.body);
     var obj = req.body;
     obj.status='pending'
-    // if(obj.role=='admin')
-    // obj.switch="admin";
-    // else {
-    //   obj.switch='user'
-    // }
     product.create(obj,function(error,result)
     {
         if(error)
         throw err;
         else
         {
-            console.log(result);
-
             var transporter = nodemailer.createTransport({
               service: 'gmail',
               auth: {
@@ -453,7 +443,6 @@ app.post('/changepassword',function (req,res)
 
 app.get('/userslist',logger,logger2,function(req,res)
 {
-  console.log(req.body);
     res.render('userslist',{obj : req.session.data});
 })
 
@@ -464,31 +453,11 @@ app.get('/communitylist',logger,logger2,function(req,res)
 
 app.post('/sendmail',function(req,res)
 {
-  console.log(req.body);
   sendmail(req.body);
   res.end();
 })
 
-// app.post('/ul' , function(req, res) {
-//   product.countDocuments(function(e,count){
-//     console.log(req.body);
-//   var start=parseInt(req.body.start);
-//   var len=parseInt(req.body.length);
-//
-//   product.find({}).skip(start).limit(len)
-//   .then(data=> {
-//     res.send({"recordsTotal": count, "recordsFiltered" : count, data})
-//    })
-//    .catch(err => {
-//     res.send(err)
-//    })
-//  });
-// write one above
-
 app.post('/ul',function (req, res) {
-// console.log(req.body);
-// console.log(req.body.order[0].column);
-console.log("req aayi");
 var count;
 
 if(req.body.order[0].column==0)
@@ -541,8 +510,6 @@ function getdata(colname,sortorder)
       var status=req.body.status;
       var search=req.body.search.value;
       var getcount=10;
-      // console.log(req.body.search.value.length);
-
 
     var findobj={};
       console.log(role,status);
@@ -575,7 +542,6 @@ function getdata(colname,sortorder)
           delete findobj["$or"];
       }
 
-
       product.find(findobj).countDocuments(function(e,coun){
       getcount=coun;
     }).catch(err => {
@@ -589,16 +555,13 @@ function getdata(colname,sortorder)
         })
         .catch(err => {
           console.error(err)
-        //  res.send(error)
         })
     });
   }
 });
 
 app.post('/cl',function (req, res) {
-  console.log("req aayi");
   var count;
-  console.log(req.body);
 
   if(req.body.order[0].column==0)
   {
@@ -643,19 +606,14 @@ app.post('/cl',function (req, res) {
 
   function getdata(colname,sortorder)
   {
-
       community.countDocuments(function(e,count){
         var start=parseInt(req.body.start);
-        console.log(start);
         var len=parseInt(req.body.length);
         var mrule=req.body.communitymembershiprule;
         var search=req.body.search.value;
         var getcount=10;
-        console.log(req.body.search.value.length);
 
-
-      var findobj={};
-        console.log(mrule);
+      	var findobj={};
         if(mrule!="all")
            { findobj.communitymembershiprule=mrule;}
         else{
@@ -684,14 +642,12 @@ app.post('/cl',function (req, res) {
         console.error(err)
         res.send(error)
       })
-
         community.find(findobj).skip(start).limit(len).sort({[colname] : sortorder})
         .then(data => {
             res.send({"recordsTotal" : count,"recordsFiltered" :getcount,data})
           })
           .catch(err => {
             console.error(err)
-          //  res.send(error)
           })
         })
       }
@@ -699,7 +655,6 @@ app.post('/cl',function (req, res) {
 
 app.post('/tl',function(req,res)
 {
-  // console.log(req);
   let count;
 
   if(req.body.order[0].column==0)
@@ -727,7 +682,6 @@ app.post('/tl',function(req,res)
     getdata("tagname",1);
   }
 
-
   function getdata(colname,sortorder)
   {
       tag.countDocuments(function(e,count){
@@ -735,24 +689,11 @@ app.post('/tl',function(req,res)
         let len=parseInt(req.body.length);
         let search=req.body.search.value;
         let getcount=10;
-        // console.log(req.body.search.value.length);
-
 
       var findobj = {
          tagflag : "1",
       };
-        // console.log(role,status);
-        // if(role!="all")
-        //    { findobj.role=role;
-        //    }
-        // else{
-        //     delete findobj["role"];
-        // }
-        // if(status!="all")
-        //     {findobj.status=status;}
-        // else{
-        //     delete findobj["status"];
-        // }
+
         if(search!='')
             findobj["$or"]= [{
             "tagname":  { '$regex' : search, '$options' : 'i' }
@@ -764,7 +705,6 @@ app.post('/tl',function(req,res)
         else {
             delete findobj["$or"];
         }
-
 
        tag.find(findobj).countDocuments(function(e,coun){
         getcount=coun;
