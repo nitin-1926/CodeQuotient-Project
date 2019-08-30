@@ -18,18 +18,13 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 app.use(session({
-  secret: "AaabraKaDabra",
+  secret: "AaolooBukhara",
   resave: false,
   saveUnintialized: true,
 }))
 
 app.use(function (req, res, next) {
-  // if(req.session.isLogin)
-  console.log("in middleware");
   next()
-  // else {
-    // res.redirect('/');
-  // }
 })
 
 var mongoose = require('mongoose');
@@ -64,11 +59,11 @@ var productSchema = new mongoose.Schema({
     photoname: {type : String, default:"/dp.png"},
     githubid : String,
     switch: String,
-    req : [{ type: schema.Types.ObjectId, ref: 'comms' }],            // kis kis commuity ke liye request ki hui hai
-    join : [{ type: schema.Types.ObjectId, ref: 'comms' }],
-    owned : [{ type: schema.Types.ObjectId, ref: 'comms' }],
-    manager : [{ type: schema.Types.ObjectId, ref: 'comms' }],           // kis kis community ka manager not ownner
-    invitations : [{ type: schema.Types.ObjectId, ref: 'comms' }],     // kis kis community ki invitations ayi hui hai
+    req : [{ type: schema.Types.ObjectId, ref: 'comms' }],            // communities requested for
+    join : [{ type: schema.Types.ObjectId, ref: 'comms' }],				// communities joined
+    owned : [{ type: schema.Types.ObjectId, ref: 'comms' }],			// communities owned after promoting
+    manager : [{ type: schema.Types.ObjectId, ref: 'comms' }],           // communities manager not ownner
+    invitations : [{ type: schema.Types.ObjectId, ref: 'comms' }],     // communities invitations recieved
 })
 
 var tagSchema = new mongoose.Schema({
@@ -119,12 +114,7 @@ passport.use(
       callbackURL: "/auth/github/callback",
       session:true
       },function(accessToken, refreshToken, profile, cb) {
-          console.log('###############################');
-          console.log('passport callback function fired');
-          // console.log(profile);
-          console.log("-----------profile ka khtm---------------");
           return cb(null,profile);
-
       })
   );
 
@@ -132,9 +122,6 @@ app.get('/auth/github',passport.authenticate('github'));
 
 app.get('/auth/github/callback',passport.authenticate('github', { failureRedirect: 'login.html' }), function (req, res)
   {
-
-      console.log("githubsignin succesful");
-
       product.find({
         githubid : req.session.passport.user._json.id
       })
@@ -142,8 +129,6 @@ app.get('/auth/github/callback',passport.authenticate('github', { failureRedirec
       {
         if(data.length>0)
         {
-          console.log("-----------MIL GEYA---------");
-          console.log(data);
           req.session.islogin = 1;
           var obj = Object();
           obj.isLogin = 1;
@@ -163,14 +148,10 @@ app.get('/auth/github/callback',passport.authenticate('github', { failureRedirec
           }
           obj._id=data[0]._id;
           req.session.data=obj;
-          console.log('github login successful')
-          console.log(obj)
-          console.log("------------added--------------");
           res.redirect('/home');
         }
         else
         {
-          console.log("nahi MILA==-===-0=-0-=0786789809");
           var obj = {
           name : req.session.passport.user._json.name,
           username : req.session.passport.user._json.email,
@@ -216,7 +197,6 @@ app.get('/auth/github/callback',passport.authenticate('github', { failureRedirec
 
 app.post('/login',function (req,res)
 {
-
     product.find({
       username: req.body.username,
       password: req.body.password
@@ -225,15 +205,12 @@ app.post('/login',function (req,res)
       {
         if(data.length>0)
         {
-
              if(req.session.isLogin)
              {
-               // console.log("Thankyou");
                res.render(home);
              }
              else
              {
-             // console.log("----------------================="+data[0]);
                if(data[0].state =="notactive")
                {
                  res.send("0000");
