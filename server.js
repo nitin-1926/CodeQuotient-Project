@@ -1331,10 +1331,10 @@ app.get('/community/editcommunity/:pro',logger,function(req,res)
 
 app.post('/get',function(req,res)
 {
-    var query = [{path : 'communityownerid' , select : { 'name' : 1 , 'photoname' : 1 } },{path : 'communitymember' , select : { 'name' : 1 , 'photoname' : 1 } },{path : 'communitymanager' , select : { 'name' : 1 , 'photoname' : 1 } }];
-    community.findOne({ "_id" : req.body._id }).populate( query ).exec(function (err, person) {
-    if (err) throw err;
-    res.send(person);
+	var query = [{path : 'communityownerid' , select : { 'name' : 1 , 'photoname' : 1 } },{path : 'communitymember' , select : { 'name' : 1 , 'photoname' : 1 } },{path : 'communitymanager' , select : { 'name' : 1 , 'photoname' : 1 } }];
+	community.findOne({ "_id" : req.body._id }).populate( query ).exec(function (err, person) {
+	if (err) throw err;
+	res.send(person);
   });
 });
 
@@ -1360,7 +1360,6 @@ app.post('/createDiscussion/:pro',function(req,res)
       else {
           res.send("DiSCUSSSION ENTERED");
       }
-
   })
 })
 
@@ -1395,7 +1394,7 @@ app.get('/viewprofile/:pro',logger,function(req,res)
   })
 })
 
-app.listen(3000,function()
+app.listen(3000,function()					//Server Running Confirmation
 {
       console.log("Running on port 3000");
 });
