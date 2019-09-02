@@ -1419,11 +1419,12 @@ function logger(req,res,next)				//login vaala
   }
 }
 function logger2(req,res,next)				//Admin vaala
-    {
-      {
-        next();
-      }
-      else {
-          res.redirect('/');
-      }
-    }
+{
+	if(req.session.data.role = 'admin')
+	  {
+	    next();
+	  }
+	  else {
+	      res.redirect('/');
+	  }
+}
