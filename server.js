@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require('express')
 var path = require('path')
 var app = express()
@@ -353,8 +354,8 @@ app.post('/adduser',function(req,res)
             var transporter = nodemailer.createTransport({
               service: 'gmail',
               auth: {
-                user: 'hack7jack@gmail.com',
-                pass: ''
+                user: process.env.EMAIL,
+                pass: process.env.PASSWORD
               }
             });
 
@@ -362,7 +363,7 @@ app.post('/adduser',function(req,res)
               from: 'hack7jack@gmail.com',
               to: req.body.username,
               subject: 'Welcome To CQ',
-              text: "Your Username is: " + req.body.username + "\n" + " Password is: " + req.body.password + "Hope your Journey goes smooth"
+              text: "Your Username is: " + req.body.username + "\n" + " Password is: " + req.body.password + "\n" + " Hope your Journey goes smooth."
             };
 
             transporter.sendMail(mailOptions, function(error, info){
@@ -382,8 +383,8 @@ function sendmail(obj)
     var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'hack7jack@gmail.com',
-        pass: ''
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD
       }
     });
 
