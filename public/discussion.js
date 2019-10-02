@@ -10,7 +10,6 @@ window.onload = function()
   request.onload = function()
   {
     var data = JSON.parse(request.responseText);
-    console.log(data);
     for(var i in data.communitydiscussion)
     {
       addtoDOM(data.communitydiscussion[i]);
@@ -19,7 +18,6 @@ window.onload = function()
 }
 function addtoDOM(obj)
 {
-  console.log(obj);
   var div = '<div class="container discussion-container">'
               +'<div class="panel panel-default allSidesSoft" style="background:white;">'
                 +'<div class="dropup">'

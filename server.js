@@ -1192,48 +1192,48 @@ app.post('/removeUser',function(req,res)
   })
 })
 
-// app.post('/promoteUser',function(req,res)
-// {
-//   community.updateOne( { "_id" : req.body.commid } , {  $push : { communitymanager : req.body.userid } , $pull : { communitymember : { $in : [req.body.userid] } }  },function(err,result)
-//   {
-//       if(err)
-//       throw err;
-//       else {
-//         product.updateOne( { "_id" : req.body.userid } , {  $push : { manager : req.body.commid } , $pull : { join : { $in : [req.body.commid] } }  },function(err,result)
-//         {
-//           if(err)
-//           throw err;
-//           else {
-//             res.send("DONE");
-//           }
-//         })
-//       }
-//   })
-// })
+app.post('/promoteUser',function(req,res)
+{
+  community.updateOne( { "_id" : req.body.commid } , {  $push : { communitymanager : req.body.userid } , $pull : { communitymember : { $in : [req.body.userid] } }  },function(err,result)
+  {
+      if(err)
+      throw err;
+      else {
+        product.updateOne( { "_id" : req.body.userid } , {  $push : { manager : req.body.commid } , $pull : { join : { $in : [req.body.commid] } }  },function(err,result)
+        {
+          if(err)
+          throw err;
+          else {
+            res.send("DONE");
+          }
+        })
+      }
+  })
+})
 
-// app.post('/getObj',function(req,res)
-// {
-//   res.send(req.session.data);
-// })
+app.post('/getObj',function(req,res)
+{
+  res.send(req.session.data);
+})
 
-// app.post('/demoteUser',function(req,res)
-// {
-//   community.updateOne( { "_id" : req.body.commid } , {  $push : { communitymember : req.body.userid } , $pull : { communitymanager : { $in : [req.body.userid] } }  },function(err,result)
-//   {
-//       if(err)
-//       throw err;
-//       else {
-//         product.updateOne( { "_id" : req.body.userid } , {  $push : { join : req.body.commid } , $pull : { manager : { $in : [req.body.commid] } }  },function(err,result)
-//         {
-//           if(err)
-//           throw err;
-//           else {
-//             res.send("DONE");
-//           }
-//         })
-//       }
-//   })
-// })
+app.post('/demoteUser',function(req,res)
+{
+  community.updateOne( { "_id" : req.body.commid } , {  $push : { communitymember : req.body.userid } , $pull : { communitymanager : { $in : [req.body.userid] } }  },function(err,result)
+  {
+      if(err)
+      throw err;
+      else {
+        product.updateOne( { "_id" : req.body.userid } , {  $push : { join : req.body.commid } , $pull : { manager : { $in : [req.body.commid] } }  },function(err,result)
+        {
+          if(err)
+          throw err;
+          else {
+            res.send("DONE");
+          }
+        })
+      }
+  })
+})
 
 app.get('/community/list',logger,function(req,res)
 {
@@ -1359,7 +1359,7 @@ app.post('/createDiscussion/:pro',function(req,res)
       if(error)
       throw error;
       else {
-          res.send("DiSCUSSSION ENTERED");
+          res.redirect('back');
       }
   })
 })
