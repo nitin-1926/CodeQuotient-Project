@@ -16,7 +16,6 @@
       {
           if(request.responseText=='0000')
           {
-            console.log("hello");
             window.location = '/notactive'
           }
           else if(request.responseText=='0')
@@ -25,7 +24,6 @@
           }
           else
           {
-            console.log('dsdssssssss');
             window.location = '/home'
           }
       }

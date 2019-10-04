@@ -336,21 +336,35 @@ app.get('/editinfo',logger,function(req,res)
   }
 })
 
+var exists;
+
 app.get('/adduser',logger,logger2,function(req,res)
 {
-    res.render('adduser',{obj : req.session.data});
+    res.render('adduser',{obj : req.session.data , exists:exists});
+    exists =0;
 })
 
 app.post('/adduser',function(req,res)
 {
+    exists = 0;
     var obj = req.body;
     obj.status='pending'
-    product.create(obj,function(error,result)
-    {
-        if(error)
-        throw err;
-        else
-        {
+        product.find({
+      username: req.body.username,
+    })
+    .then(data =>
+      {
+        if(data.length != 0){
+          exists = 1;
+          res.redirect('/adduser')
+        }
+        else{
+          product.create(obj,function(error,result)
+          {
+            if(error)
+            throw err;
+            else
+            {
             var transporter = nodemailer.createTransport({
               service: 'gmail',
               auth: {
@@ -376,7 +390,8 @@ app.post('/adduser',function(req,res)
         }
     })
     res.render('profile',{obj : req.session.data});
-  })
+  }
+})
 
 function sendmail(obj)
 {
@@ -402,7 +417,8 @@ function sendmail(obj)
         console.log('Email sent: ' + info.res);
       }
     });
-}
+        }
+      })
 
 app.get('/changepassword',logger,function(req,res)
 {
