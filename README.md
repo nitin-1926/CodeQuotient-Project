@@ -1,3 +1,3 @@
 # Web-Project
-# This a website for Code Quotient (clone)
-# It is basically a company management system with different options for Admins, Users, Community builders and others
+# It is a highly functioning User Management System with the feature of Communities and discussion.
+# It contains different options for Admins, Users, Community builders and others
